@@ -1,0 +1,171 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.title{
+  text-align: center;
+  margin-top: 5%;
+}
+.title2{
+  text-align: center;
+  margin-top: 1%;
+}
+.page {
+  background-color: #f0e130;
+  height: 81vh;
+  margin: auto -16px;
+  padding: 16px 32px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.top{
+  text-align: center;
+}
+
+input{
+  /* margin-top: 4%; */
+  /* margin-left: 20%; */
+  border: 1px solid #999;
+  padding: 0.5rem;
+  height: 40px;
+  width: 50%;
+}
+
+.search{
+  color: white;
+  background-color: blue;
+  height: 40px;
+  width: 15%;
+}
+
+html {
+  font-family: "Montserrat", sans-serif;
+}
+body {
+  background: white;
+  padding: 0 16px;
+}
+
+header {
+  background-color: #f0e130;
+  margin: auto -16px;
+  padding: 16px 32px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.inputsearch{
+  /* margin-left: 30%; */
+  margin-top: 2%;
+  width: 50%;
+  height: 8%;
+}
+
+.topheading{
+  background-color: #FAFAD2;
+  margin: auto -16px;
+  padding: 16px 32px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+.heading{
+  background-color: #f0e130;
+  margin: auto -16px;
+  padding: 20px 32px;
+}
+
+header h1 {
+  color: #fff;
+  font-family: "McLaren", cursive;
+  font-weight: 200;
+}
+.heading img{
+  max-width: 7%;
+  max-height: 7%;
+  margin-left: 5%;
+}
+
+th {
+  cursor: pointer;
+}
+body {
+  font-family: 'open sans', sans-serif;
+  font-size: 16px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead th {
+  text-align: left;
+  border-bottom: 2px solid black;
+}
+
+thead button {
+  border: 0;
+  border-radius: none;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: inherit;
+  padding: 0.5em;
+  margin-bottom: 1px;
+}
+
+thead button.ascending::after {
+  content: '👇';
+  display: inline-block;
+  margin-left: 1em;
+}
+
+thead button.descending::after {
+  content: '☝️';
+  display: inline-block;
+  margin-left: 1em;
+}
+
+tbody td {
+  padding: 0.5em;
+  border-bottom: 1px solid #ccc;
+}
+
+tbody tr:hover {
+  background-color: #eee;
+}
+
+
+.no-suggestions {
+  color: black;
+  padding: 0.5rem;
+  margin-left: 20% ;
+}
+
+.suggestions {
+  border: 1px solid #999;
+  border-top-width: 0;
+  list-style: none;
+  margin-top: 0;
+  margin-left: 20% ;
+  max-height: 143px;
+  overflow-y: auto;
+  padding-left: 0;
+  width: 50%;
+}
+
+.suggestions li {
+  padding: 0.5rem;
+}
+
+.suggestion-active,
+.suggestions li:hover {
+  background-color: rgb(3, 3, 240);
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.suggestions li:not(:last-of-type) {
+  border-bottom: 1px solid #999;
+}
+

@@ -1,0 +1,16 @@
+.prescriptioninput{
+    padding: 2% 0;
+    background-color: rgb(204, 185, 80);
+    border: 2px solid grey;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+
+.input{
+    display: block ;
+    width: 30%;
+    margin: auto;
+}
