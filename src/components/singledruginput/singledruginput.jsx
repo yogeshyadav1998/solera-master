@@ -105,15 +105,16 @@ class Autocomplete extends Component {
        
     var input=document.getElementById('input').value
     console.log(input)
-    const url = "http://127.0.0.1:5000/api/data_merged/get_medicinesSuggestions?input=" + input
-    axios.get(url)
-    .then(response => {
-      this.setState({
-        showprices:true,
-        selectedmed: response.data.result[0]
-      })
-      console.log(this.state)
-    })
+    this.props.onselectmedicine(input);
+    // const url = "http://127.0.0.1:5000/api/data_merged/get_medicinesSuggestions?input=" + input
+    // axios.get(url)
+    // .then(response => {
+    //   this.setState({
+    //     showprices:true,
+    //     selectedmed: response.data.result[0]
+    //   })
+    //   console.log(this.state)
+    // })
   }
 
   render() {
@@ -172,7 +173,7 @@ class Autocomplete extends Component {
           onKeyDown={onKeyDown}
           value={userInput}
         />
-        <a href="/prices"><button className="search" type="submit" onClick={this.myfunction}>FIND THE LOWEST PRICES</button></a>
+        <button className="search" type="submit" onClick={this.myfunction}>FIND THE LOWEST PRICES</button>
         {suggestionsListComponent}
         </div>
       </Fragment>
@@ -189,7 +190,8 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch =>{
   return{
-    onfetchsuggestions: (input) => dispatch(action.fetchsuggestions(input))
+    onfetchsuggestions: (input) => dispatch(action.fetchsuggestions(input)),
+    onselectmedicine: (input) => dispatch(action.selectmedicine(input))
   }
 }
 

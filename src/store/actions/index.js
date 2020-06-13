@@ -1,3 +1,4 @@
 export {
-    fetchsuggestions
+    fetchsuggestions,
+    selectmedicine
 } from './singledrugprice';

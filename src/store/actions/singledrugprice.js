@@ -34,6 +34,26 @@ export const updateselectedmed = (medicine)=> {
     }
 }
 
+export const selectmedicine = (medname) =>{
+    return dispatch =>{
+        const selectedmed = [];
+        const url = "http://127.0.0.1:5000/api/data_merged/get_medicines?input="
+        axios.post(url,{
+            input: medname
+        })
+        .then(response =>{
+            console.log(response)
+            for(let key in response.data.output){
+                selectedmed.push(
+                    response.data.output[key]
+                )
+            }
+            console.log(selectedmed)
+        })
+        dispatch(updateselectedmed(selectedmed))
+    }
+}
+
 export const fetchsingledrugprice_start = () =>{
     return{
         type: actiontype.FETCH_SINGLE_DRUG_PRICE_START
