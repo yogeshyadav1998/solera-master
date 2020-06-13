@@ -59,6 +59,7 @@ class Autocomplete extends Component {
       activeSuggestion: 0,
       showSuggestions: true,
       showprices: false,
+      filteredSuggestions: this.props.suggestions,
       userInput: e.currentTarget.value
     });
   };

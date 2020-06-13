@@ -4,6 +4,7 @@ import * as actiontype from './../actions/actiontypes';
 
 const initialstate ={
     suggestions: [],
+    selectedmed: [],
     loading: false
 }
 
@@ -14,7 +15,11 @@ const singledrugpricereducer = (state = initialstate,action) =>{
                 ...state,
                 suggestions:action.data
             }
-
+        case actiontype.UPDATE_SELECTED_MEDICINE:
+            return{
+                ...state,
+                selectedmed:action.medicine
+            }
         case actiontype.FETCH_SINGLE_DRUG_PRICE_START:
             return{
                 ...state,

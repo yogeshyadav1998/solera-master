@@ -23,7 +23,14 @@ export const fetchsuggestions = (input) =>{
             }
         })
         console.log(suggestions)
-        // dispatch(suggestions)
+        dispatch(updatesuggestions(suggestions))
+    }
+}
+
+export const updateselectedmed = (medicine)=> {
+    return{
+        type: actiontype.UPDATE_SELECTED_MEDICINE,
+        medicine: medicine
     }
 }
 
