@@ -173,7 +173,7 @@ class Autocomplete extends Component {
           onKeyDown={onKeyDown}
           value={userInput}
         />
-        <button className="search" type="submit" onClick={this.myfunction}>FIND THE LOWEST PRICES</button>
+        <a href="/prices"><button className="search" type="submit" onClick={this.myfunction}>FIND THE LOWEST PRICES</button></a>
         {suggestionsListComponent}
         </div>
       </Fragment>
