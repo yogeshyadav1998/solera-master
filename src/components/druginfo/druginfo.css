@@ -1,0 +1,24 @@
+.druginfo_section{
+    display: flex;
+    width: 70%;
+    margin: 10vh auto 5vh auto;
+    height: 30vh;
+    border: 1px solid grey;
+    -webkit-box-shadow: -1px -1px 40px -1px rgba(0,0,0,0.69);
+    -moz-box-shadow: -1px -1px 40px -1px rgba(0,0,0,0.69);
+    box-shadow: -1px -1px 40px -1px rgba(0,0,0,0.69);
+}
+
+.drug_image{
+    width: 20%;
+    height: 100%;
+    background-color: hotpink;
+}
+
+.drug_decription{
+    width: 80%;
+}
+
+.description{
+    font-size:15px;
+}

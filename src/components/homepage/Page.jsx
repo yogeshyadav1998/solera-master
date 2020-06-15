@@ -1,5 +1,5 @@
 import React from "react";
-import SuggestedInput from "./Suggest";
+import SuggestedInput from "../suggestions/Suggest";
 
 
 function Page() {

@@ -2,7 +2,7 @@ import React, { Component, Fragment,useEffect } from "react";
 import PropTypes from "prop-types";
 import axios from 'axios';
 import {connect} from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Card,Row, Col, Icon, Avatar } from 'antd';
 
 import './singledruginput.css';
@@ -135,7 +135,7 @@ class Autocomplete extends Component {
     if (showSuggestions && userInput) {
       if (filteredSuggestions.length) {
         suggestionsListComponent = (
-          <ul class="suggestions">
+          <ul className="suggestions">
             {filteredSuggestions.map((suggestion, index) => {
               let className;
 
@@ -173,7 +173,7 @@ class Autocomplete extends Component {
           onKeyDown={onKeyDown}
           value={userInput}
         />
-        <a href="/prices"><button className="search" type="submit" onClick={this.myfunction}>FIND THE LOWEST PRICES</button></a>
+        <Link to="/prices"><button className="search" type="submit" onClick={this.myfunction}>FIND THE LOWEST PRICES</button></Link>
         {suggestionsListComponent}
         </div>
       </Fragment>

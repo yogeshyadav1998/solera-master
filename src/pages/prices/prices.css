@@ -1,0 +1,28 @@
+.filter_section{
+    width: 70%;
+    display: flex;
+    margin:auto;
+    height:7vh;
+    border: 2px solid grey;
+}
+
+.filter_heading{
+    background-color: rgb(226, 191, 36);
+    height: 100%;
+    width: 30%;
+    text-align: center;
+    font-size: 1.5rem;
+    padding:10px;
+}
+
+.filter_manufacturer{
+    width:35%;
+    border: none;
+    background-color: khaki;
+}
+
+.information_section{
+    width: 70%;
+    margin: auto;
+}
+

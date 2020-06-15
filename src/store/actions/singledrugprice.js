@@ -1,4 +1,5 @@
 import * as actiontype from './actiontypes';
+// import { browserHistory } from 'react-router';
 import axios from 'axios';
 
 export const updatesuggestions = (suggestions) =>{
@@ -26,8 +27,16 @@ export const fetchsuggestions = (input) =>{
         dispatch(updatesuggestions(suggestions))
     }
 }
+export const updateselectedmedstart = ()=> {
+    console.log('hello')
+    return{
+        type: actiontype.UPDATE_SELECTED_MEDICINE_START
+    }
+}
+
 
 export const updateselectedmed = (medicine)=> {
+    console.log('hello')
     return{
         type: actiontype.UPDATE_SELECTED_MEDICINE,
         medicine: medicine
@@ -36,6 +45,7 @@ export const updateselectedmed = (medicine)=> {
 
 export const selectmedicine = (medname) =>{
     return dispatch =>{
+        dispatch(updateselectedmedstart())
         const selectedmed = [];
         const url = "http://127.0.0.1:5000/api/data_merged/get_medicines?input="
         axios.post(url,{
@@ -50,7 +60,10 @@ export const selectmedicine = (medname) =>{
             }
             console.log(selectedmed)
         })
+        setTimeout(function(){
         dispatch(updateselectedmed(selectedmed))
+        },4000)
+        // browserHistory.push('/prices')
     }
 }
 
