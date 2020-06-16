@@ -3,10 +3,12 @@ import React from 'react';
 import * as actiontype from './../actions/actiontypes';
 
 const initialstate ={
+    userinput:'',
     suggestions: [],
     selectedmed: [],
-    finalmed: '',
-    loading: false
+    finalmed: [],
+    loading: false,
+    loadingprice: false
 }
 
 const singledrugpricereducer = (state = initialstate,action) =>{
@@ -25,12 +27,19 @@ const singledrugpricereducer = (state = initialstate,action) =>{
             return{
                 ...state,
                 selectedmed:action.medicine,
+                userinput:action.userinput,
                 loading: false
             }
-        case actiontype.FETCH_SINGLE_DRUG_PRICE_START:
+        case actiontype.FETCH_FINALMED_START:
             return{
                 ...state,
-                loading: true
+                loadingprice: true
+            }
+        case actiontype.FETCH_FINALMED_SUCCESS:
+            return{
+                ...state,
+                finalmed: action.finalmed,
+                loadingprice: false
             }
         default:
             return state

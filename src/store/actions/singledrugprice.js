@@ -35,11 +35,12 @@ export const updateselectedmedstart = ()=> {
 }
 
 
-export const updateselectedmed = (medicine)=> {
+export const updateselectedmed = (medicine,userinput)=> {
     console.log('hello')
     return{
         type: actiontype.UPDATE_SELECTED_MEDICINE,
-        medicine: medicine
+        medicine: medicine,
+        userinput: userinput
     }
 }
 
@@ -61,14 +62,47 @@ export const selectmedicine = (medname) =>{
             console.log(selectedmed)
         })
         setTimeout(function(){
-        dispatch(updateselectedmed(selectedmed))
-        },4000)
+        dispatch(updateselectedmed(selectedmed,medname))
+        },10000)
         // browserHistory.push('/prices')
     }
 }
 
-export const fetchsingledrugprice_start = () =>{
+export const fetch_finalmed_start = () =>{
     return{
-        type: actiontype.FETCH_SINGLE_DRUG_PRICE_START
+        type: actiontype.FETCH_FINALMED_START
+    }
+}
+
+export const fetch_finalmed_success = (finalmed) =>{
+    return{
+        type: actiontype.FETCH_FINALMED_SUCCESS,
+        finalmed:finalmed
+    }
+}
+
+export const fetch_finalmed = (medname,manufacturer) =>{
+    return dispatch =>{
+        dispatch(fetch_finalmed_start())
+        console.log(medname)
+        console.log(manufacturer)
+        const finalmed = [];
+        const url = "http://127.0.0.1:5000/api/filter_api"
+        axios.post(url,{
+            input: medname,
+            manufacturer: manufacturer
+        })
+        .then(response =>{
+            console.log(response)
+            for(let key in response.data.output){
+                finalmed.push(
+                    response.data[key]
+                )
+            }
+            console.log(finalmed)
+        })
+        setTimeout(function(){
+            dispatch(fetch_finalmed_success(finalmed))
+        },3000)
     }
 }
