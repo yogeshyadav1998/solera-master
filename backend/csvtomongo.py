@@ -1,16 +1,18 @@
 from pymongo import MongoClient
 import pandas as pd
-
+import pymongo
 
 client = MongoClient()  ## Put here connection URI
 #mongodb+srv://heroku_user:heroku@cluster0-dmk7t.mongodb.net/merged_with_prices?retryWrites=true&w=majority
 db=client.MedicineDetail
-
 data_merged=db.data_merged
-df = pd.read_csv('testing_data.csv')  ###paste your path here
-records_ = df.to_dict(orient = 'records')
-result = db.data_merged.insert_many(records_ )
+def create():
+    df = pd.read_csv('processed_merged_v1.csv')  ###paste your path here
+    records_ = df.to_dict(orient = 'records')
+    result = db.data_merged.insert_many(records_ )
 
+create()
+data_merged.create_index([("medName" , pymongo.TEXT),('search_salts', pymongo.TEXT)], name='search_index', default_language='english')
 '''
 oneMg = db.oneMg
 df = pd.read_csv('onemg.csv')  ###paste your path here

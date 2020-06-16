@@ -2,10 +2,8 @@ from flask import *
 from pymongo import MongoClient
 import re 
 from bson import ObjectId
-from flask_cors import CORS
 #from csvtomongo import csvtomongo
 app=Flask("__main__")
-CORS(app)
 client = MongoClient('localhost',27017)
 #csvtomongo()
 @app.route("/")
@@ -46,7 +44,7 @@ def getMedicines():
     #resp = list(resp)
     resp=data_merged.find({'medName':inp}, { "_id": 0, "medName": 1, "pageURL": 1 , "manufacturer": 1, "pharmeasy_price":1,"onemg_price":1,"netmeds_price":1,'search_salts':1,'quantity_in_pack':1})
     resp=list(resp)
-    
+    print(resp)
     saltname=resp[0]['search_salts']
     print(saltname)
     result=data_merged.find({'search_salts':saltname}, { "_id": 0, "medName": 1, "pageURL": 1 , "manufacturer": 1, "pharmeasy_price":1,"onemg_price":1,"netmeds_price":1,'search_salts':1,'quantity_in_pack':1})
@@ -57,16 +55,21 @@ def getMedicines():
 @app.route('/api/filter_api',methods=['GET','POST'])
 def filter_api():
     inp=request.json['input']
+    #prescription=request.json['prescription']
     manufacturer=request.json['manufacturer']
+    
     db = client['MedicineDetail']
     data_merged = db["data_merged"]
     resp=data_merged.find({'medName':inp}, { "_id": 0, "medName": 1, "pageURL": 1 , "manufacturer": 1, "pharmeasy_price":1,"onemg_price":1,"netmeds_price":1,'search_salts':1,'quantity_in_pack':1})
     resp=list(resp)
     
     saltname=resp[0]['search_salts']
+
     result=data_merged.find( { '$and': [ { 'search_salts':saltname }, 
-                         { "manufacturer": manufacturer } 
+                         { "manufacturer":{'$in' :manufacturer} }
                        ] }, { "_id": 0, "medName": 1, "pageURL": 1 , "manufacturer": 1, "pharmeasy_price":1,"onemg_price":1,"netmeds_price":1,'search_salts':1,'quantity_in_pack':1} )
+
+
     result=list(result)
     return jsonify(result)
 app.run(debug=True)
