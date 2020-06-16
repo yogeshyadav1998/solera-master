@@ -33,22 +33,6 @@ class Autocomplete extends Component {
 
     this.props.onfetchsuggestions(userInput);
     
-    // const url = "http://127.0.0.1:5000/api/data_merged/get_medicinesSuggestions?input=" + userInput
-    // axios.get(url)
-    // .then(response => {
-    //   console.log(response)
-    //   const suggestions = [];
-    //   for(let key in response.data.result){
-    //     suggestions.push(
-    //         response.data.result[key].medName
-    //     )
-    //   }
-    //   console.log(suggestions)
-    //   this.setState({
-    //     filteredSuggestions: suggestions
-    //   })
-    // })
-
     // Filter our suggestions that don't contain the user's input
     // const filteredSuggestions = suggestions.f ilter(
     //   suggestion =>

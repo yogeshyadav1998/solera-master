@@ -2,8 +2,10 @@ from flask import *
 from pymongo import MongoClient
 import re 
 from bson import ObjectId
+from flask_cors import CORS
 #from csvtomongo import csvtomongo
 app=Flask("__main__")
+CORS(app)
 client = MongoClient('localhost',27017)
 #csvtomongo()
 @app.route("/")

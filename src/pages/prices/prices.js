@@ -18,7 +18,13 @@ class prices extends Component{
       }
 
     handleChange(event) {
-        this.setState({manufacturer: event.target.value});
+        this.setState({manufacturer: event.target.value})
+        .then(()=>{
+            this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer);
+        })
+        // setTimeout(() => {
+        //     this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer);
+        // }, 500);
         
     }
     
@@ -32,6 +38,20 @@ class prices extends Component{
             })
         )
         
+        let priceslist;
+        if(this.props.loadingprice){
+            priceslist=(
+                <Spinner/>
+            )
+        }else{
+            priceslist=(
+                this.props.finalmed.map((medicine)=>{
+                    return(
+                        <Pricecard/>
+                    )
+                }
+            ))
+        }
 
         let drugpricessection;
         if(this.props.loading){
@@ -49,14 +69,14 @@ class prices extends Component{
                     <option value="" disabled selected>Select Manufacturer</option>
                     {manufacturerlist}
                     </select>
-                    <select className="filter_manufacturer" name="cars" id="cars" >
+                    <select className="filter_manufacturer" defaultValue="" name="cars" id="cars" >
                     <option value="" disabled selected>Select Quantity</option>
                     <option value="volvo">Volvo</option>
                     <option value="saab">Saab</option>
                     <option value="mercedes">Mercedes</option>
                     <option value="audi">Audi</option>
                     </select>
-                    <select className="filter_manufacturer" name="cars" id="cars" >
+                    <select className="filter_manufacturer" defaultValue="" name="cars" id="cars" >
                     <option value="" disabled selected>Select info</option>
                     <option value="volvo">Prices</option>
                     <option value="saab">Medicare</option>
@@ -65,7 +85,7 @@ class prices extends Component{
                     </select>
                 </div>
                 <div className="information_section">
-                    <Pricecard/>
+                    {priceslist}
                 </div>
                 </div>
                 </div>
@@ -84,13 +104,18 @@ class prices extends Component{
 
 const mapStateToProps = state =>{
     return{
-      selectedmed: state.singledrug.selectedmed,
-      loading: state.singledrug.loading
+        userinput: state.singledrug.userinput,
+        selectedmed: state.singledrug.selectedmed,
+        finalmed: state.singledrug.finalmed,
+        loading: state.singledrug.loading,
+        loadingprice: state.singledrug.loadingprice
     }
   }
   
   const mapDispatchToProps = dispatch =>{
-    return{}
+    return{
+        onfetchfinalmed: (userinput, manufacturer) => dispatch(action.fetch_finalmed(userinput, manufacturer))
+    }
   }
 
 export default connect(mapStateToProps,mapDispatchToProps)(prices);
