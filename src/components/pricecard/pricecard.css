@@ -5,10 +5,17 @@
     width: 80%
 }
 
-.sitename{
+.productname{
+    text-align: center;
     width: 40%;
-    padding-left: 5%;
+    margin: auto;
     font-size: 2rem;
+}
+
+.pricearea{
+    text-align: center;
+    width: 20%;
+    background-color: rgb(210, 212, 85);
 }
 
 .price_text{

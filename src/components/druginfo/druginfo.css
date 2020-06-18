@@ -10,15 +10,22 @@
 }
 
 .drug_image{
+    display: block;
     width: 20%;
     height: 100%;
-    background-color: hotpink;
+    background-color: rgb(109, 106, 108);
+}
+
+.drugname{
+    font-size: x-large;
+    font-weight: 600;
 }
 
 .drug_decription{
     width: 80%;
+    overflow: hidden;
 }
 
 .description{
-    font-size:15px;
+    font-size:13px;
 }

@@ -35,35 +35,39 @@ export const updateselectedmedstart = ()=> {
 }
 
 
-export const updateselectedmed = (medicine,userinput)=> {
-    console.log('hello')
+export const updateselectedmed = (medicine,userinput,userinputintro)=> {
     return{
         type: actiontype.UPDATE_SELECTED_MEDICINE,
         medicine: medicine,
-        userinput: userinput
+        userinput: userinput,
+        userinputintro: userinputintro
     }
 }
 
-export const selectmedicine = (medname) =>{
+export const selectmedicine = (userinput) =>{
     return dispatch =>{
         dispatch(updateselectedmedstart())
-        const selectedmed = [];
+        const manufacturer = [];
+        let userinputintro = '';
+        let distinctmanufacturer= [];
         const url = "http://127.0.0.1:5000/api/data_merged/get_medicines?input="
         axios.post(url,{
-            input: medname
+            input: userinput
         })
         .then(response =>{
             console.log(response)
+            userinputintro = response.data.output[0].Introduction
             for(let key in response.data.output){
-                selectedmed.push(
-                    response.data.output[key]
+                
+                manufacturer.push(
+                    response.data.output[key].manufacturer
                 )
             }
-            console.log(selectedmed)
+            distinctmanufacturer = [... new Set(manufacturer)]
         })
         setTimeout(function(){
-        dispatch(updateselectedmed(selectedmed,medname))
-        },10000)
+        dispatch(updateselectedmed(distinctmanufacturer,userinput,userinputintro))
+        },1500)
         // browserHistory.push('/prices')
     }
 }
@@ -81,28 +85,27 @@ export const fetch_finalmed_success = (finalmed) =>{
     }
 }
 
-export const fetch_finalmed = (medname,manufacturer) =>{
+export const fetch_finalmed = (medname,manufacturer,packform) =>{
     return dispatch =>{
         dispatch(fetch_finalmed_start())
         console.log(medname)
         console.log(manufacturer)
-        const finalmed = [];
+        console.log(packform)
+        let finalmed = [];
         const url = "http://127.0.0.1:5000/api/filter_api"
         axios.post(url,{
             input: medname,
-            manufacturer: manufacturer
+            manufacturer: [manufacturer],
+            prescription:[''],
+            pack_form:[packform]
         })
         .then(response =>{
             console.log(response)
-            for(let key in response.data.output){
-                finalmed.push(
-                    response.data[key]
-                )
-            }
+            finalmed = response.data
             console.log(finalmed)
         })
         setTimeout(function(){
             dispatch(fetch_finalmed_success(finalmed))
-        },3000)
+        },1000)
     }
 }

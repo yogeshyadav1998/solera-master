@@ -4,9 +4,11 @@ import * as actiontype from './../actions/actiontypes';
 
 const initialstate ={
     userinput:'',
+    userinputintro:'',
     suggestions: [],
-    selectedmed: [],
+    manufacturers: [],
     finalmed: [],
+    mainmed:'',
     loading: false,
     loadingprice: false
 }
@@ -26,9 +28,10 @@ const singledrugpricereducer = (state = initialstate,action) =>{
         case actiontype.UPDATE_SELECTED_MEDICINE:
             return{
                 ...state,
-                selectedmed:action.medicine,
+                manufacturers:action.medicine,
                 userinput:action.userinput,
-                loading: false
+                userinputintro:action.userinputintro,
+                loading:false
             }
         case actiontype.FETCH_FINALMED_START:
             return{
@@ -39,6 +42,7 @@ const singledrugpricereducer = (state = initialstate,action) =>{
             return{
                 ...state,
                 finalmed: action.finalmed,
+                mainmed: action.finalmed[0],
                 loadingprice: false
             }
         default:

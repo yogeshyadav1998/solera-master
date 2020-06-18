@@ -1,7 +1,7 @@
 import React,{useEffect, Component} from "react";
 
 import Home from './pages/home/home';
-import Prices from './pages/prices/prices';
+import Prices from './pages/singlemed_price/prices';
 
 
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';

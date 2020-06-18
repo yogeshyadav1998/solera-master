@@ -1,0 +1,14 @@
+.info_section{
+    width: 70%;
+    margin: auto;
+}
+
+.info_content{
+    width: 100%;
+    margin: 10vh 5vh;
+}
+
+.info_heading{
+    font-size: x-large;
+    color: rgb(145, 104, 15);
+}

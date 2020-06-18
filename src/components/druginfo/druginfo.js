@@ -8,12 +8,10 @@ class druginfo extends Component{
     render(){
         return(
             <div className="druginfo_section">
-                <div className="drug_image">
-                        <img style={{height:"100%", width:"100%"}}src="/images/drug.jfif"></img>
-                </div>
+                <img className="drug_image"  src="/images/drug.jfif"></img>
                 <div className="drug_description">
-                    <p>Name</p>
-                    <p className="description">hello hsdfbj jknkjdnfjkn jksndfksdnkjfn jksdfkdsnfksn ksnfksdnfksdnf sndklfnsdkf snfkldsfdsklf skdfjjskldjflk kssjfdklsdfm skdfjjsklfj lksdfjksldlfj</p>
+                    <p className="drugname">{this.props.drugname}</p>
+                    <p className="description">{this.props.drugintroduction}</p>
                 </div>
             </div>
         )
