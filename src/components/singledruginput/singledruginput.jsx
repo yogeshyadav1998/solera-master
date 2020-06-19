@@ -21,7 +21,7 @@ class Autocomplete extends Component {
       // Whether or not the suggestion list is shown
       showSuggestions: false,
       // What the user has entered
-      userInput: "",
+      userInput: null,
       //seleted med
       selectedmed: []
     };
@@ -30,15 +30,15 @@ class Autocomplete extends Component {
   onChange = e => {
     // const { suggestions } = this.props;
     const userInput = e.currentTarget.value;
-
+  
     this.props.onfetchsuggestions(userInput);
     
     // Filter our suggestions that don't contain the user's input
     // const filteredSuggestions = suggestions.f ilter(
     //   suggestion =>
     //     suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
-    // );
-
+  console.log("hii")  // );
+    
     this.setState({
       activeSuggestion: 0,
       showSuggestions: true,
@@ -157,7 +157,7 @@ class Autocomplete extends Component {
           onKeyDown={onKeyDown}
           value={userInput}
         />
-        <Link to="/prices"><button className="search" type="submit" onClick={this.myfunction}>FIND THE LOWEST PRICES</button></Link>
+        <Link to="/singlemedprice"><button disabled={!this.state.userInput} className="search" type="submit" onClick={this.myfunction}>FIND THE LOWEST PRICES</button></Link>
         {suggestionsListComponent}
         </div>
       </Fragment>
