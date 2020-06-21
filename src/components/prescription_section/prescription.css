@@ -1,0 +1,23 @@
+.prescriptioninput_section{
+    margin-top: 30px;
+    background-color: rgb(204, 185, 80);
+    border: 2px solid grey;
+    padding: 2% 0;
+    text-align: center;
+}
+
+.prescriptioninput_item{
+    justify-content: center;
+    display: flex;
+}
+
+.removebutton{
+    background-color: tomato;
+    padding: 5px 10px;
+    margin: auto 5px;
+}
+
+.addbutton{
+    background-color: rgb(71, 255, 141);
+    padding: 5px 10px;
+}

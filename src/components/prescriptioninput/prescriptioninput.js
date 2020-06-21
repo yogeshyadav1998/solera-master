@@ -4,7 +4,7 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Card,Row, Col, Icon, Avatar } from 'antd';
-
+import './prescriptioninput.css';
 import * as action from '../../store/actions/index';
 
 class Autocomplete extends Component {
@@ -20,24 +20,21 @@ class Autocomplete extends Component {
       // Whether or not the suggestion list is shown
       showSuggestions: false,
       // What the user has entered
-      userInput1: '',
-      userInput2: '',
-      userInput3: '',
-      //seleted med
-      selectedmed: []
+      userInput: '',
+      //showpushbutton
+      show: true
     };
     }
 
     onChange = e => {
         const userInput = e.currentTarget.value;
         this.props.onfetchsuggestions(userInput);
-        console.log("hii")
         this.setState({
         activeSuggestion: 0,
         showSuggestions: true,
         showprices: false,
         filteredSuggestions: this.props.suggestions,
-        userInput1: e.currentTarget.value
+        userInput: e.currentTarget.value
         });
     };
 
@@ -48,6 +45,7 @@ class Autocomplete extends Component {
         showSuggestions: false,
         userInput: e.currentTarget.innerText
         });
+        // console.log(input)
     };
 
     onKeyDown = e => {
@@ -80,9 +78,11 @@ class Autocomplete extends Component {
     };
 
     myfunction=()=>{
-        var input=document.getElementById('input').value
-        console.log(input)
-        this.props.onselectmedicine(input);
+        this.setState({
+            show: false
+        })
+        var input=document.getElementById(this.props.id).value;
+        this.props.onpushuserinput(input);
     }
 
     render() {
@@ -90,19 +90,18 @@ class Autocomplete extends Component {
         onChange,
         onClick,
         onKeyDown,
+        myfunction,
         state: {
             activeSuggestion,
             filteredSuggestions,
             showSuggestions,
-            userInput1,
-            userInput2,
-            userInput3
+            userInput
         }
         } = this;
 
         let suggestionsListComponent;
 
-        if (showSuggestions && userInput1) {
+        if (showSuggestions && userInput) {
         if (filteredSuggestions.length) {
             suggestionsListComponent = (
             <ul className="suggestions">
@@ -134,42 +133,24 @@ class Autocomplete extends Component {
 
         return (
         <Fragment>
-            <div className="prescriptioninput">
-                <div className="prescptioninput_section">
+                <div className="prescriptioninput">
+                    <div className="input_section" >
                     <input
-                    className="input_section"
-                    id="input"
+                    style={{width:"100%"}}
+                    id={this.props.id}
                     placeholder="Type a drug name (like Atorvastin,Sildenafil,etc)"
                     type="text"
                     onChange={onChange}
                     onKeyDown={onKeyDown}
-                    value={userInput1}
-                    />
-                    <input
-                    className="input_section"
-                    id="input"
-                    placeholder="Type a drug name (like Atorvastin,Sildenafil,etc)"
-                    type="text"
-                    onChange={onChange}
-                    onKeyDown={onKeyDown}
-                    value={userInput2}
-                    />
-                    <input
-                    className="input_section"
-                    id="input"
-                    placeholder="Type a drug name (like Atorvastin,Sildenafil,etc)"
-                    type="text"
-                    onChange={onChange}
-                    onKeyDown={onKeyDown}
-                    value={userInput3}
+                    value={userInput}
                     />
                     {suggestionsListComponent}
+                    </div>
+                    <button style={this.state.show? null : {display: "none"}} className="submitbutton" type="button" onClick={myfunction}>
+                    ✓
+                    </button>
                 </div>
-                <Link to="/singlemedprice"><button disabled={!this.state.userInput} className="search" type="submit" onClick={this.myfunction}>FIND THE LOWEST PRICES</button></Link>
-                
-            </div>
         </Fragment>
-        
         );
     }
     }
@@ -183,7 +164,8 @@ class Autocomplete extends Component {
     const mapDispatchToProps = dispatch =>{
     return{
         onfetchsuggestions: (input) => dispatch(action.fetchsuggestions(input)),
-        onselectmedicine: (input) => dispatch(action.selectmedicine(input))
+        onselectmedicine: (input) => dispatch(action.selectmedicine(input)),
+        onpushuserinput: (input) => dispatch(action.pushuserinput(input))
     }
     }
 

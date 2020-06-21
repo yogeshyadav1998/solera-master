@@ -30,7 +30,6 @@ class Autocomplete extends Component {
   onChange = e => {
     // const { suggestions } = this.props;
     const userInput = e.currentTarget.value;
-  
     this.props.onfetchsuggestions(userInput);
     
     // Filter our suggestions that don't contain the user's input
@@ -46,6 +45,8 @@ class Autocomplete extends Component {
       filteredSuggestions: this.props.suggestions,
       userInput: e.currentTarget.value
     });
+    
+    console.log(this.state.filteredSuggestions)
   };
 
   onClick = e => {
@@ -150,6 +151,7 @@ class Autocomplete extends Component {
       <Fragment>
         <div className="singledruginput">
         <input
+          style={{width:"50%"}}
           id="input"
           placeholder="Type a drug name (like Atorvastin,Sildenafil,etc)"
           type="text"

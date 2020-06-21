@@ -3,7 +3,7 @@ import { render } from "react-dom";
 import axios from 'axios';
 
 import Singledruginput from "../singledruginput/singledruginput";
-import Prescriptioninput from "../prescriptioninput/prescriptioninput";
+import Prescriptioninput from "../prescription_section/prescription";
 
 function SuggestedInput() {
 

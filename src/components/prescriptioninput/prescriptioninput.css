@@ -1,16 +1,19 @@
 .prescriptioninput{
-    padding: 2% 0;
-    background-color: rgb(204, 185, 80);
-    border: 2px solid grey;
-    display: block;
-    width: 100%;
-    text-align: center;
-    margin-top: 30px;
+    display: flex;
+    width: 50%;
+    margin: 10px ;
 }
 
 
-.input{
+.input_section{
     display: block ;
-    width: 30%;
-    margin: auto;
+    width: 95%;
+}
+
+
+
+.submitbutton{
+    background-color: rgb(80, 194, 105);
+    padding: 5px 10px;
+    margin: auto 5px;
 }

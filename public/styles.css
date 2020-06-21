@@ -14,7 +14,7 @@
 }
 .page {
   background-color: #f0e130;
-  height: 81vh;
+  height: 100%;
   margin: auto -16px;
   padding: 16px 32px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
@@ -30,7 +30,6 @@ input{
   border: 1px solid #999;
   padding: 0.5rem;
   height: 40px;
-  width: 50%;
 }
 
 .search{
@@ -91,6 +90,7 @@ th {
 body {
   font-family: 'open sans', sans-serif;
   font-size: 16px;
+  background-color: #f0e130 ;
 }
 
 table {
@@ -145,8 +145,7 @@ tbody tr:hover {
   border: 1px solid #999;
   border-top-width: 0;
   list-style: none;
-  margin-top: 0;
-  margin-left: 20% ;
+  margin: auto;
   max-height: 143px;
   overflow-y: auto;
   padding-left: 0;
