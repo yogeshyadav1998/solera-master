@@ -6,5 +6,6 @@ export {
 
 export{
     pushuserinput,
-    popuserinput
+    popuserinput,
+    fetchprescriptionprice
 } from './prescriptionprice';

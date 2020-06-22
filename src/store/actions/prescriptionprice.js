@@ -17,3 +17,34 @@ export const popuserinput = (id) =>{
         id: id
     }
 }
+
+export const fetchprescriptionprice_start = ()=>{
+    return{
+        type: actiontype.FETCH_PRESCRIPTIONPRICE_START
+    }
+}
+
+export const fetchprescriptionprice_success = (medicines) =>{
+    return{
+        type: actiontype.FETCH_PRESCRIPTIONPRICE_SUCCESS,
+        data: medicines
+    }
+}
+
+export const fetchprescriptionprice = (medicine) =>{
+    return dispatch =>{
+        dispatch(fetchprescriptionprice_start())
+        let medicines = []
+        const url = "http://127.0.0.1:5000/api/prescription"
+        axios.post(url,{
+            input: medicine
+        })
+        .then(response =>{
+            console.log(response)
+            medicines = response.data
+        })
+        setTimeout(function(){
+        dispatch(fetchprescriptionprice_success(medicines))
+        },2000)
+    }
+}

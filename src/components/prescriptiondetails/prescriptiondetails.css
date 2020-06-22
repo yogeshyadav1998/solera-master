@@ -1,0 +1,49 @@
+.prescriptiondetails{
+    padding: 10px;
+    width: 70%;
+    margin: 5vh auto;
+    background-color: rgb(190, 181, 61);
+    border: 2px solid grey;
+}
+
+.detailheading1{
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 15px;
+}
+.detailheading2{
+    text-align: center;
+    font-size: 1.7rem;
+    font-weight: 500;
+    margin: 15px;
+}
+
+.details{
+    display: flex;
+    width: 100%;
+}
+
+.nameattribute{
+    width: 40%;
+    text-align: center;
+}
+
+.siteattribute{
+    width: 30%;
+    text-align: center;
+}
+
+.priceattribute{
+    width: 30%;
+    text-align: center;
+}
+
+.attributeheading{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.medicinedetail{
+    margin: 5px;
+}

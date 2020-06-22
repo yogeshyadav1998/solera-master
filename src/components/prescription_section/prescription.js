@@ -3,6 +3,7 @@
     import Prescriptioninput from '../prescriptioninput/prescriptioninput';
     import './prescription.css';
     import {connect} from 'react-redux';
+    import { Link } from 'react-router-dom';
     import * as action from '../../store/actions/index';
 
     function App(props) {
@@ -21,14 +22,13 @@
         setFields(values);
     }
 
+    function fetchprice (){
+        props.onfetchprescriptionprice(props.inputs)
+    }
+
     return (
         <div className="prescriptioninput_section">
         <h1> For Prescription</h1>
-
-        <button className="addbutton" type="button" onClick={() => handleAdd()}>
-            ADD INPUT
-        </button>
-
         {fields.map((field, idx) => {
             return (
             <div key={`${field}-${idx}`} className="prescriptioninput_item" >
@@ -39,22 +39,26 @@
             </div>
             );
         })}
-        <button className="search" type="button" >
-             FIND LOWEST PRICES   
+        <button className="addbutton" type="button" onClick={() => handleAdd()}>
+            ADD INPUT
         </button>
+        <Link to="/prescriptionprice"><button className="search" type="button" disabled={!props.inputs[0]} onClick={() => fetchprice()}>
+             FIND LOWEST PRICES   
+        </button></Link>
         </div>
     );
     }
 
     const mapStateToProps = state =>{
         return{
-            suggestions: state.singledrug.suggestions
+            inputs: state.prescription.inputs
         }
     }
 
-    const mapDispatchToProps = (dispatch, ownProps) =>{
+    const mapDispatchToProps = (dispatch) =>{
     return{
-            onpopuserinput: (id) => dispatch(action.popuserinput(id))
+            onpopuserinput: (id) => dispatch(action.popuserinput(id)),
+            onfetchprescriptionprice: (medicines) => dispatch(action.fetchprescriptionprice(medicines))
         }
     }
 
