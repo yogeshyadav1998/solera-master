@@ -103,7 +103,7 @@ def filter_api():
     
     return jsonify(result)
 
-@app.route('/image_upload',methods=['POST'])
+@app.route('/image_upload',methods=['POST','GET'])
 def image_upload():
     presc_img=request.files['file']
     
