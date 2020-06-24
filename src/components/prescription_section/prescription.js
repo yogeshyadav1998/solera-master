@@ -40,10 +40,10 @@
             );
         })}
         <button className="addbutton" type="button" onClick={() => handleAdd()}>
-            ADD INPUT
+            ADD MEDICINE
         </button>
         <Link to="/prescriptionprice"><button className="search" type="button" disabled={!props.inputs[0]} onClick={() => fetchprice()}>
-             FIND LOWEST PRICES   
+            FIND LOWEST PRICES   
         </button></Link>
         </div>
     );
