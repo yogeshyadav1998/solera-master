@@ -49,6 +49,7 @@ export const selectmedicine = (userinput) =>{
     return dispatch =>{
         dispatch(updateselectedmedstart())
         const manufacturer = [];
+        let packform = [];
         let userinputintro = '';
         let distinctmanufacturer= [];
         const url = "http://127.0.0.1:5000/api/data_merged/get_medicines?input="
@@ -60,13 +61,15 @@ export const selectmedicine = (userinput) =>{
             userinputintro = response.data.output[0].Introduction
             console.log(userinputintro)
             for(let key in response.data.output){
-                
+                packform.push(
+                    response.data.output[key].pack_form
+                )
                 manufacturer.push(
                     response.data.output[key].manufacturer
                 )
             }
             distinctmanufacturer = [... new Set(manufacturer)]
-            console.log(distinctmanufacturer)
+            // console.log(distinctmanufacturer)
         })
         setTimeout(function(){
         dispatch(updateselectedmed(distinctmanufacturer,userinput,userinputintro))
