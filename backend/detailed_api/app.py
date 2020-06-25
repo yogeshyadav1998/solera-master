@@ -62,7 +62,7 @@ def getMedicines():
     resp=data_merged.find({'medName':inp}, { "_id": 0, "medName":1,"manufacturer":1,"prescription_req":1,"selling_price":1,"salts":1,"Units in Pack":1,"Pack Size":1,"Unit of Measurement":1, "pack form":1,"in_stock":1,"Introduction":1,"uses":1,"benefits":1,"directions":1,"side_effects":1,
 	"precautions":1,"pageURL":1,"strength_in_mg":1,"overall_strength":1,"netmeds_price":1,"pharmeasy_price":1,"medlife_price":1,"search_salts":1})
     resp=list(resp)
-    
+    print(resp)
     saltname=resp[0]['search_salts']
     print(saltname)
     result=data_merged.find({'search_salts':saltname}, { "_id": 0, "medName":1,"manufacturer":1,"prescription_req":1,"selling_price":1,"salts":1,"Units in Pack":1,"Pack Size":1,"Unit of Measurement":1, "pack form":1,"in_stock":1,"Introduction":1,"uses":1,"benefits":1,"directions":1,"side_effects":1,

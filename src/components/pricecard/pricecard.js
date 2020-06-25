@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import * as action from '../../store/actions/index';
+import { Link } from 'react-router-dom';
 import './pricecard.css';
 
 class pricecard extends Component{
@@ -10,10 +11,10 @@ class pricecard extends Component{
         console.log(this.props.id)
         let finalmed = this.props.finalmed
         let medicines = this.props.medicines
-        console.log(medicines)
         medicines[this.props.medid] = finalmed[this.props.id]
         console.log(medicines)
-        // this.props.onreplacemed(medicine)
+        this.props.onreplacemed(medicines)
+        this.props.toggleshowfilter()
     }
 
     render(){
@@ -32,7 +33,7 @@ class pricecard extends Component{
                     <p className="sitename">pharmeasy</p>
                     <p className="price_text">{this.props.medicine.pharmeasy_price}</p>
                 </div>
-                <button onClick={this.replacemed}>replace</button>
+                <Link to="/prescriptionprice"><button onClick={this.replacemed}>replace</button></Link>
             </div>
         )
     }

@@ -69,6 +69,7 @@ class prescriptionpricecard extends Component{
                         medicine={medicine}
                         medid={this.props.id}
                         id={index}
+                        toggleshowfilter={this.toggleshowfilter}
                     />
                 )
             }
