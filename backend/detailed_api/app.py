@@ -103,6 +103,20 @@ def filter_api():
     
     return jsonify(result)
 
+
+@app.route('/api/prescription',methods=['POST'])
+def prescription():
+    inp=request.json["input"]
+    db=client['merged_with_prices']
+    data_merged=db["with_prices"]
+    response=data_merged.find({'medName':{"$in":inp}},{ "_id": 0, "medName":1,"manufacturer":1,"prescription_req":1,"selling_price":1,"salts":1,"Units in Pack":1,"Pack Size":1,"Unit of Measurement":1, "pack form":1,"in_stock":1,
+                              "strength_in_mg":1,"overall_strength":1,"netmeds_price":1,"pharmeasy_price":1,"medlife_price":1,"search_salts":1})
+    response=list(response)
+    return jsonify(response)
+
+
+
+
 @app.route('/image_upload',methods=['POST','GET'])
 def image_upload():
     presc_img=request.files['file']
