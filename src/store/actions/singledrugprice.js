@@ -36,10 +36,12 @@ export const updateselectedmedstart = ()=> {
 }
 
 
-export const updateselectedmed = (medicine,userinput,userinputintro)=> {
+export const updateselectedmed = (manufacturers, packforms, strength, userinput,userinputintro)=> {
     return{
         type: actiontype.UPDATE_SELECTED_MEDICINE,
-        medicine: medicine,
+        manufacturer: manufacturers,
+        packform: packforms,
+        strength: strength,
         userinput: userinput,
         userinputintro: userinputintro
     }
@@ -48,10 +50,13 @@ export const updateselectedmed = (medicine,userinput,userinputintro)=> {
 export const selectmedicine = (userinput) =>{
     return dispatch =>{
         dispatch(updateselectedmedstart())
-        const manufacturer = [];
+        let manufacturer = [];
         let packform = [];
+        let strengths = [];
         let userinputintro = '';
-        let distinctmanufacturer= [];
+        let distinctpackforms = [];
+        let distinctmanufacturers= [];
+        let distinctstrengths = [];
         const url = "http://127.0.0.1:5000/api/data_merged/get_medicines?input="
         axios.post(url,{
             input: userinput
@@ -62,17 +67,22 @@ export const selectmedicine = (userinput) =>{
             console.log(userinputintro)
             for(let key in response.data.output){
                 packform.push(
-                    response.data.output[key].pack_form
+                    response.data.output[key]['pack form']
                 )
                 manufacturer.push(
                     response.data.output[key].manufacturer
                 )
+                strengths.push(
+                    response.data.output[key].strength_in_mg
+                )
             }
-            distinctmanufacturer = [... new Set(manufacturer)]
-            // console.log(distinctmanufacturer)
+            distinctpackforms = [... new Set(packform)]
+            distinctstrengths = [... new Set(strengths)]
+            distinctmanufacturers = [... new Set(manufacturer)]
+            console.log(distinctpackforms)
         })
         setTimeout(function(){
-        dispatch(updateselectedmed(distinctmanufacturer,userinput,userinputintro))
+        dispatch(updateselectedmed(distinctmanufacturers, distinctpackforms, distinctstrengths, userinput,userinputintro))
         },1000)
         // browserHistory.push('/prices')
     }
@@ -102,8 +112,9 @@ export const fetch_finalmed = (medname,manufacturer,packform) =>{
         axios.post(url,{
             input: medname,
             manufacturer: [manufacturer],
-            prescription:[''],
-            pack_form:[packform]
+            strength: [''],
+            pack_form:[packform],
+            prescription:['']  
         })
         .then(response =>{
             console.log(response)

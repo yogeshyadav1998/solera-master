@@ -52,6 +52,14 @@ class prices extends Component{
             })
         )
         
+        let packformlist = (
+            this.props.packforms.map((packform, index)=>{
+                return(
+                <option value={packform} key={index}>{packform}</option>
+                )
+                // console.log(medicine.manufacturer)
+            })
+        )
         let pricelist;
         if(this.props.loadingprice){
             pricelist=(
@@ -89,10 +97,7 @@ class prices extends Component{
                     </select>
                     <select className="filter" defaultValue="" name="pack_form" onChange={this.handlepackformChange}  >
                     <option value="" disabled selected>Select Pack Form</option>
-                    <option value="">All</option>
-                    <option value="bottle">Bottle</option>
-                    <option value="tube">Tube</option>
-                    <option value="strip">Tablet</option>
+                    {packformlist}
                     </select>
                     <select className="filter" defaultValue="" name="information_type" onChange={this.handleinformationtypeChange} >
                     <option value="prices" selected>prices</option>
@@ -122,6 +127,7 @@ const mapStateToProps = state =>{
         userinput: state.singledrug.userinput,
         userinputintro: state.singledrug.userinputintro,
         manufacturers: state.singledrug.manufacturers,
+        packforms: state.singledrug.packforms,
         finalmed: state.singledrug.finalmed,
         mainmed: state.singledrug.mainmed,
         loading: state.singledrug.loading,

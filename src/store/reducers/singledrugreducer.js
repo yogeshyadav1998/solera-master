@@ -7,6 +7,9 @@ const initialstate ={
     userinputintro:'',
     suggestions: [],
     manufacturers: [],
+    packforms: [],
+    strengths: [],
+    prescriptionrequired: '',
     finalmed: [],
     mainmed:'',
     loading: false,
@@ -28,7 +31,9 @@ const singledrugpricereducer = (state = initialstate,action) =>{
         case actiontype.UPDATE_SELECTED_MEDICINE:
             return{
                 ...state,
-                manufacturers:action.medicine,
+                manufacturers:action.manufacturer,
+                packforms: action.packform,
+                strengths: action.strengths,
                 userinput:action.userinput,
                 userinputintro: action.userinputintro,
                 loading:false

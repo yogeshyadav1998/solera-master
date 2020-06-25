@@ -62,6 +62,24 @@ class prescriptionpricecard extends Component{
             })
         )
 
+        let packformlist = (
+            this.props.packforms.map((packform, index)=>{
+                return(
+                <option value={packform} key={index}>{packform}</option>
+                )
+                // console.log(medicine.manufacturer)
+            })
+        )
+
+        let strengthlist = (
+            this.props.strengths.map((strength, index)=>{
+                return(
+                <option value={strength} key={index}>{strength}</option>
+                )
+                // console.log(medicine.manufacturer)
+            })
+        )
+
         let pricelist = (
             this.props.finalmed.map((medicine,index)=>{
                 return(
@@ -88,9 +106,7 @@ class prescriptionpricecard extends Component{
                     <select className="filter" defaultValue="" name="pack_form" onChange={this.handlepackformChange}  >
                     <option value="" disabled selected>Select Pack Form</option>
                     <option value="">All</option>
-                    <option value="bottle">Bottle</option>
-                    <option value="tube">Tube</option>
-                    <option value="strip">Tablet</option>
+                    {packformlist}
                     </select>
                     <select className="filter" defaultValue="" name="strength" onChange={this.handlestrengthChange} >
                     <option value="prices" selected>5 mg</option>
@@ -131,6 +147,8 @@ class prescriptionpricecard extends Component{
 const mapStateToProps = state =>{
     return{
         manufacturers: state.singledrug.manufacturers,
+        packforms: state.singledrug.packforms,
+        strengths: state.singledrug.strengths,
         finalmed: state.singledrug.finalmed
     }
 }
