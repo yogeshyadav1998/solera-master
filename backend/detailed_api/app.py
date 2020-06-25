@@ -50,13 +50,13 @@ def suggestions():
     return jsonify(result=resp)
 
 
+
 @app.route('/api/data_merged/get_medicines',methods=['GET','POST'])
 def getMedicines():  
     inp=request.json['input']
     print(inp) ## Put here connection URI
-    db = client['merged_with_prices']
-    data_merged = db["with_prices"]
-        #resp = data_merged.find({"medName":input}, { "_id": 0, "medName": 1, "pageURL": 1 , "manufacturer": 1, "pharmeasy_price":1,"onemg_price":1,"netmeds_price":1,'salt':1,'quantity_in_pack':1})
+    db=client['merged_with_prices']
+    data_merged=db["with_prices"]        #resp = data_merged.find({"medName":input}, { "_id": 0, "medName": 1, "pageURL": 1 , "manufacturer": 1, "pharmeasy_price":1,"onemg_price":1,"netmeds_price":1,'salt':1,'quantity_in_pack':1})
     #resp = list(resp)
     #data_merged.create_index( { 'search_salts' : 1 },pymongo.TEXT )
     resp=data_merged.find({'medName':inp}, { "_id": 0, "medName":1,"manufacturer":1,"prescription_req":1,"selling_price":1,"salts":1,"Units in Pack":1,"Pack Size":1,"Unit of Measurement":1, "pack form":1,"in_stock":1,"Introduction":1,"uses":1,"benefits":1,"directions":1,"side_effects":1,
@@ -77,8 +77,8 @@ def filter_api():
     prescription=request.json['prescription']
     manufacturer=request.json['manufacturer']
     pack_form=request.json['pack_form']
-    db = client['merged_with_prices']
-    data_merged = db["with_prices"]
+    db=client['merged_with_prices']
+    data_merged=db["with_prices"]  
     resp=data_merged.find({'medName':inp}, { "_id": 0, "medName":1,"manufacturer":1,"prescription_req":1,"selling_price":1,"salts":1,"Units in Pack":1,"Pack Size":1,"Unit of Measurement":1, "pack form":1,"in_stock":1,"Introduction":1,"uses":1,"benefits":1,"directions":1,"side_effects":1,
 	"precautions":1,"pageURL":1,"strength_in_mg":1,"overall_strength":1,"netmeds_price":1,"pharmeasy_price":1,"medlife_price":1,"search_salts":1})
     resp=list(resp)
@@ -103,7 +103,6 @@ def filter_api():
     
     return jsonify(result)
 
-
 @app.route('/api/prescription',methods=['POST'])
 def prescription():
     inp=request.json["input"]
@@ -113,7 +112,6 @@ def prescription():
                               "strength_in_mg":1,"overall_strength":1,"netmeds_price":1,"pharmeasy_price":1,"medlife_price":1,"search_salts":1})
     response=list(response)
     return jsonify(response)
-
 
 
 
