@@ -36,12 +36,12 @@ export const updateselectedmedstart = ()=> {
 }
 
 
-export const updateselectedmed = (manufacturers, packforms, strength, userinput,userinputintro)=> {
+export const updateselectedmed = (manufacturers, packforms, strengths, userinput,userinputintro)=> {
     return{
         type: actiontype.UPDATE_SELECTED_MEDICINE,
         manufacturer: manufacturers,
         packform: packforms,
-        strength: strength,
+        strength: strengths,
         userinput: userinput,
         userinputintro: userinputintro
     }
@@ -79,7 +79,7 @@ export const selectmedicine = (userinput) =>{
             distinctpackforms = [... new Set(packform)]
             distinctstrengths = [... new Set(strengths)]
             distinctmanufacturers = [... new Set(manufacturer)]
-            console.log(distinctpackforms)
+            console.log(distinctstrengths)
         })
         setTimeout(function(){
         dispatch(updateselectedmed(distinctmanufacturers, distinctpackforms, distinctstrengths, userinput,userinputintro))
@@ -101,18 +101,19 @@ export const fetch_finalmed_success = (finalmed) =>{
     }
 }
 
-export const fetch_finalmed = (medname,manufacturer,packform) =>{
+export const fetch_finalmed = (medname,manufacturer,packform,strength) =>{
     return dispatch =>{
         dispatch(fetch_finalmed_start())
         console.log(medname)
         console.log(manufacturer)
         console.log(packform)
+        console.log(strength)
         let finalmed = [];
         const url = "http://127.0.0.1:5000/api/filter_api"
         axios.post(url,{
             input: medname,
             manufacturer: [manufacturer],
-            strength: [''],
+            strength: [strength],
             pack_form:[packform],
             prescription:['']  
         })

@@ -13,29 +13,34 @@ class prescriptionpricecard extends Component{
             showfilters: false,
             manufacturer: '',
             packform:'',
+            strength:''
         };
         this.handlemanufacturerChange = this.handlemanufacturerChange.bind(this);
         this.handlepackformChange = this.handlepackformChange.bind(this);
+        this.handlestrengthChange = this.handlestrengthChange.bind(this);
       }
 
     handlemanufacturerChange(event) {
         this.setState({manufacturer: event.target.value})
         setTimeout(() => {
-            this.props.onfetchfinalmed(this.props.medicine.medName,this.state.manufacturer,this.state.packform);
-        }, 200);
+            this.props.onfetchfinalmed(this.props.medicine.medName,this.state.manufacturer,this.state.packform,this.state.strength);
+        }, 100);
         
     }
 
     handlepackformChange(event) {
         this.setState({packform: event.target.value})
         setTimeout(() => {
-            this.props.onfetchfinalmed(this.props.medicine.medName,this.state.manufacturer,this.state.packform);
-        }, 200);
+            this.props.onfetchfinalmed(this.props.medicine.medName,this.state.manufacturer,this.state.packform,this.state.strength);
+        }, 100);
         
     }
 
     handlestrengthChange(event){
-        console.log("hellohii")
+        this.setState({strength: event.target.value})
+        setTimeout(() => {
+            this.props.onfetchfinalmed(this.props.medicine.medName,this.state.manufacturer,this.state.packform,this.state.strength);
+        }, 100);
     }
 
     setmanufacturer = () =>{
