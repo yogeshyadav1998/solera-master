@@ -107,5 +107,14 @@ def prescription():
     return jsonify(response)
 
 
+@app.route('/image_upload',methods=['POST','GET'])
+def image_upload():
+    presc_img=request.files['file']
+    
+    mongo.save_file(presc_img.filename,presc_img)
+
+@app.route('/file/<filename>')
+def file(filename):
+    return mongo.send_file(filename)
 
 app.run(debug=True)
