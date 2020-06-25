@@ -71,14 +71,21 @@ class prescriptionpricecard extends Component{
             })
         )
 
-        let strengthlist = (
+        let strengthlist;
+        if(this.props.strengths){
+            strengthlist= (
+            
             this.props.strengths.map((strength, index)=>{
                 return(
                 <option value={strength} key={index}>{strength}</option>
                 )
                 // console.log(medicine.manufacturer)
             })
-        )
+        )}else{
+            strengthlist=(
+                <option value={""} >not available</option>
+            )
+        }
 
         let pricelist = (
             this.props.finalmed.map((medicine,index)=>{
@@ -109,8 +116,7 @@ class prescriptionpricecard extends Component{
                     {packformlist}
                     </select>
                     <select className="filter" defaultValue="" name="strength" onChange={this.handlestrengthChange} >
-                    <option value="prices" selected>5 mg</option>
-                    <option value="druginfo">10 mg</option>
+                    {strengthlist}
                     </select>
                     </div>
                     {pricelist}
