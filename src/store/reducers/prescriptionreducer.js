@@ -31,6 +31,11 @@ const singledrugpricereducer = (state = initialstate,action) =>{
                 medicines: action.data,
                 loading: false
             }
+        case actiontype.REPLACE_MED:
+            return{
+                ...state,
+                medicines: action.medicines
+            }
         default:
             return state
     }

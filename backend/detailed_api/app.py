@@ -4,11 +4,11 @@ import re
 import pymongo
 from bson import ObjectId
 from flask_pymongo import PyMongo
-
+from flask_cors import CORS
 
 #from csvtomongo import csvtomongo
 app=Flask("__main__")
-
+CORS(app)
 app.config['MONGO_URI']='mongodb+srv://heroku_user:heroku@cluster0-dmk7t.mongodb.net/merged_with_prices?retryWrites=true&w=majority'
 mongo=PyMongo(app)
 
