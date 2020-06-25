@@ -59,13 +59,12 @@ class prices extends Component{
             )
         }else{
             pricelist=(
-                this.props.finalmed.map((medicine)=>{
+                this.props.finalmed.map((medicine, index)=>{
                     return(
                         <Pricecard 
-                            productname={medicine.medName}
-                            netmedprice={medicine.netmeds_price}
-                            onemgprice={medicine.selling_price}
-                            pharmeasyprice={medicine.pharmeasy_price}
+                            medicine = {medicine}
+                            id={index}
+                            singlemed = {true}
                         />
                     )
                 }

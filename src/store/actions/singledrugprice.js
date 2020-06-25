@@ -58,6 +58,7 @@ export const selectmedicine = (userinput) =>{
         .then(response =>{
             console.log(response)
             userinputintro = response.data.output[0].Introduction
+            console.log(userinputintro)
             for(let key in response.data.output){
                 
                 manufacturer.push(
@@ -65,10 +66,11 @@ export const selectmedicine = (userinput) =>{
                 )
             }
             distinctmanufacturer = [... new Set(manufacturer)]
+            console.log(distinctmanufacturer)
         })
         setTimeout(function(){
         dispatch(updateselectedmed(distinctmanufacturer,userinput,userinputintro))
-        },500)
+        },1000)
         // browserHistory.push('/prices')
     }
 }

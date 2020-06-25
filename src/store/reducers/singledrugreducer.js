@@ -30,7 +30,7 @@ const singledrugpricereducer = (state = initialstate,action) =>{
                 ...state,
                 manufacturers:action.medicine,
                 userinput:action.userinput,
-                userinputintro:action.userinputintro,
+                userinputintro: action.userinputintro,
                 loading:false
             }
         case actiontype.FETCH_FINALMED_START:

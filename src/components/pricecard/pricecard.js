@@ -33,7 +33,7 @@ class pricecard extends Component{
                     <p className="sitename">pharmeasy</p>
                     <p className="price_text">{this.props.medicine.pharmeasy_price}</p>
                 </div>
-                <Link to="/prescriptionprice"><button onClick={this.replacemed}>replace</button></Link>
+                <Link to="/prescriptionprice"><button display ={this.props.singlemed ? "none" : null} onClick={this.replacemed}>replace</button></Link>
             </div>
         )
     }
