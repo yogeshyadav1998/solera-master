@@ -167,7 +167,7 @@ const mapStateToProps = state =>{
 const mapDispatchToProps = dispatch =>{
     return{
         onsetmanufacturers: (input) => dispatch(action.selectmedicine(input)),
-        onfetchfinalmed: (userinput, manufacturer, packform) => dispatch(action.fetch_finalmed(userinput, manufacturer, packform))
+        onfetchfinalmed: (userinput, manufacturer, packform, strength) => dispatch(action.fetch_finalmed(userinput, manufacturer, packform, strength))
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(prescriptionpricecard);

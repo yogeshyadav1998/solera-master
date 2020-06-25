@@ -16,6 +16,7 @@ class prices extends Component{
         this.state = {
             manufacturer: '',
             packform:'',
+            strength:'',
             informationtype:'prices'
         };
         this.handlemanufacturerChange = this.handlemanufacturerChange.bind(this);
@@ -26,7 +27,7 @@ class prices extends Component{
     handlemanufacturerChange(event) {
         this.setState({manufacturer: event.target.value})
         setTimeout(() => {
-            this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform);
+            this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform,this.state.strength);
         }, 500);
         
     }
@@ -34,7 +35,7 @@ class prices extends Component{
     handlepackformChange(event) {
         this.setState({packform: event.target.value})
         setTimeout(() => {
-            this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform);
+            this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform,this.state.strength);
         }, 500);
         
     }
@@ -137,7 +138,7 @@ const mapStateToProps = state =>{
   
   const mapDispatchToProps = dispatch =>{
     return{
-        onfetchfinalmed: (userinput, manufacturer, packform) => dispatch(action.fetch_finalmed(userinput, manufacturer, packform))
+        onfetchfinalmed: (userinput, manufacturer, packform, strength) => dispatch(action.fetch_finalmed(userinput, manufacturer, packform, strength))
     }
   }
 
