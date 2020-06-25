@@ -3,7 +3,7 @@ import * as actiontype from './actiontypes';
 import axios from 'axios';
 
 
-export const pushuserinput = (value, id) =>{
+export const pushuserinput = (value) =>{
     return{
         type: actiontype.PUSH_USERINPUT,
         input: value
@@ -46,5 +46,12 @@ export const fetchprescriptionprice = (medicine) =>{
         setTimeout(function(){
         dispatch(fetchprescriptionprice_success(medicines))
         },2000)
+    }
+}
+
+export const replacemed = (medicines) =>{
+    return{
+        type: actiontype.REPLACE_MED,
+        medicines: medicines
     }
 }

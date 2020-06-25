@@ -68,7 +68,7 @@ export const selectmedicine = (userinput) =>{
         })
         setTimeout(function(){
         dispatch(updateselectedmed(distinctmanufacturer,userinput,userinputintro))
-        },1500)
+        },500)
         // browserHistory.push('/prices')
     }
 }
