@@ -23,7 +23,7 @@ class pricecard extends Component{
                 <div className="names_section">
                 <p className="productname">{this.props.medicine.medName}</p>
                 <p className="manufacturername">mfr: {this.props.medicine.manufacturer}</p>
-                {this.props.medicine.prescription_req !== "Not Available" ? null : <p style={{color: "red", padding:"5px"}}>Rx</p> }
+                {this.props.medicine.prescription_req == "Not Available" ? null : <p style={{color: "red", padding:"5px"}}>Rx</p> }
                 <Link to="/prescriptionprice">
                     <button className="replacebutton" 
                         onClick={this.replacemed}>
