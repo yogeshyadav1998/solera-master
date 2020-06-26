@@ -87,7 +87,6 @@ class Autocomplete extends Component {
     }
   };
   myfunction=()=>{
-       
     var input=document.getElementById('input').value
     console.log(input)
     this.props.onselectmedicine(input);
@@ -150,7 +149,9 @@ class Autocomplete extends Component {
     return (
       <Fragment>
         <div className="singledruginput">
+        <p className="section_heading">For Single Drug</p>
         <input
+          className="druginput"
           style={{width:"50%"}}
           id="input"
           placeholder="Type a drug name (like Atorvastin,Sildenafil,etc)"
@@ -159,7 +160,7 @@ class Autocomplete extends Component {
           onKeyDown={onKeyDown}
           value={userInput}
         />
-        <Link to="/singlemedprice"><button disabled={!this.state.userInput} className="search" type="submit" onClick={this.myfunction}>FIND THE LOWEST PRICES</button></Link>
+        <Link to="/singlemedprice"><button disabled={!this.state.userInput} className="searchbutton" type="submit" onClick={this.myfunction}>FIND THE LOWEST PRICES</button></Link>
         {suggestionsListComponent}
         </div>
       </Fragment>

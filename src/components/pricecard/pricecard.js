@@ -20,7 +20,16 @@ class pricecard extends Component{
     render(){
         return(
             <div className="pricecard">
+                <div className="names_section">
                 <p className="productname">{this.props.medicine.medName}</p>
+                <p className="manufacturername">mfr: {this.props.medicine.manufacturer}</p>
+                <Link to="/prescriptionprice">
+                    <button className="replacebutton" 
+                        onClick={this.replacemed}>
+                   ADD</button>
+                </Link>
+                </div>
+                <div className="price_section" >
                 <div className="pricearea">
                     <p className="sitename">netmeds</p>
                     <p className="price_text">{this.props.medicine.netmeds_price}</p>
@@ -33,7 +42,7 @@ class pricecard extends Component{
                     <p className="sitename">pharmeasy</p>
                     <p className="price_text">{this.props.medicine.pharmeasy_price}</p>
                 </div>
-                <Link to="/prescriptionprice"><button display ={this.props.singlemed ? "none" : null} onClick={this.replacemed}>replace</button></Link>
+                </div>
             </div>
         )
     }

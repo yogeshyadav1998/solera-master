@@ -4,10 +4,13 @@
     margin:auto;
     height:7vh;
     border: 2px solid grey;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .filter_heading{
-    background-color: rgb(226, 191, 36);
+    color: white;
+    background-color: rgb(79, 133, 134);
     height: 100%;
     width: 30%;
     text-align: center;
@@ -18,7 +21,11 @@
 .filter{
     width:35%;
     border: none;
-    background-color: khaki;
+    background-color: rgb(108, 177, 177);
+}
+
+.filter :active{
+    background-color: rgb(148, 216, 207);
 }
 
 .information_section{

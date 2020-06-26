@@ -1,24 +1,49 @@
 .pricecard{
-    background-color: khaki;
+    margin: 50px auto;
+    display: block;
+    width: 90%;
+    border-bottom: 1px solid grey;
+}
+
+.names_section{
     display: flex;
-    margin: 20px auto;
-    width: 80%
 }
 
 .productname{
-    text-align: center;
-    width: 40%;
     margin: auto;
     font-size: 2rem;
+    color: rgb(7, 119, 119);
+}
+
+.manufacturername{
+    color: grey;
+    font-size: 1rem;
+    margin: auto;
+    font-style: italic;
+}
+
+.price_section{
+    width: 100%;
+    margin: 20px;
+    justify-content: center;
+    display: flex;
 }
 
 .pricearea{
     text-align: center;
-    width: 20%;
-    background-color: rgb(210, 212, 85);
+    width: 33%;
 }
 
 .price_text{
     margin: auto;
     font-size: 1.5rem;
+}
+.replacebutton{
+    height: 100%;
+    padding: auto;
+    cursor: pointer;
+    background-color: rgb(26, 112, 161);
+    border: 2px solid grey;
+    padding: 10px;
+    border-radius: 10px;
 }

@@ -94,6 +94,7 @@ class prices extends Component{
                     <p className="filter_heading">Prescription Setting</p>
                     <select className="filter" defaultValue="" name="manufacturers" onChange={this.handlemanufacturerChange}>
                     <option value="" disabled selected>Select Manufacturer</option>
+                    <option value="">All</option>
                     {manufacturerlist}
                     </select>
                     <select className="filter" defaultValue="" name="pack_form" onChange={this.handlepackformChange}  >

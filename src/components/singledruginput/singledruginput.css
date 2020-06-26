@@ -1,7 +1,22 @@
 .singledruginput{
-    margin-top: 30px;
-    background-color: rgb(204, 185, 80);
-    border: 2px solid grey;
-    padding: 2% 0;
+    margin: 40px auto;
     text-align: center;
+}
+
+.druginput{
+    background: white;
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid grey;
+    border-radius: 5px;
+}
+
+.druginput :focus :active :hover{
+    border: none;
+}
+
+.section_heading{
+   font-size: 20px;
+   font-weight: 700;
+   padding: 20px;
 }

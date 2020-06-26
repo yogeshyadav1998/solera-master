@@ -17,15 +17,18 @@
 }
 
 .drugname{
+    margin-left: 10px;
     font-size: x-large;
     font-weight: 600;
 }
 
 .drug_decription{
     width: 80%;
-    overflow: hidden;
 }
 
 .description{
-    font-size:13px;
+    margin: 5px;
+    height: 80%;
+    overflow: scroll;
+    font-size:15px;
 }

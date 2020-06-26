@@ -28,11 +28,11 @@
 
     return (
         <div className="prescriptioninput_section">
-        <h1> For Prescription</h1>
+        <p className="section_heading"> For Prescription</p>
         {fields.map((field, idx) => {
             return (
             <div key={`${field}-${idx}`} className="prescriptioninput_item" >
-                <Prescriptioninput id={idx}/>
+                <Prescriptioninput id={idx} />
                 <button className="removebutton" type="button" onClick={() => handleRemove(idx)}>
                 X
                 </button>
@@ -42,7 +42,7 @@
         <button className="addbutton" type="button" onClick={() => handleAdd()}>
             ADD MEDICINE
         </button>
-        <Link to="/prescriptionprice"><button className="search" type="button" disabled={!props.inputs[0]} onClick={() => fetchprice()}>
+        <Link to="/prescriptionprice"><button className="searchbutton" type="button" disabled={!props.inputs[0]} onClick={() => fetchprice()}>
             FIND LOWEST PRICES   
         </button></Link>
         </div>

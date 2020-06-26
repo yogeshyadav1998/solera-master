@@ -36,9 +36,10 @@ export const updateselectedmedstart = ()=> {
 }
 
 
-export const updateselectedmed = (manufacturers, packforms, strengths, userinput,userinputintro)=> {
+export const updateselectedmed = (finalmed, manufacturers, packforms, strengths, userinput,userinputintro)=> {
     return{
         type: actiontype.UPDATE_SELECTED_MEDICINE,
+        finalmed: finalmed,
         manufacturer: manufacturers,
         packform: packforms,
         strength: strengths,
@@ -50,6 +51,7 @@ export const updateselectedmed = (manufacturers, packforms, strengths, userinput
 export const selectmedicine = (userinput) =>{
     return dispatch =>{
         dispatch(updateselectedmedstart())
+        let finalmed = [];
         let manufacturer = [];
         let packform = [];
         let strengths = [];
@@ -66,6 +68,7 @@ export const selectmedicine = (userinput) =>{
             userinputintro = response.data.output[0].Introduction
             console.log(userinputintro)
             for(let key in response.data.output){
+                finalmed=response.data.output
                 packform.push(
                     response.data.output[key]['pack form']
                 )
@@ -75,14 +78,15 @@ export const selectmedicine = (userinput) =>{
                 strengths.push(
                     response.data.output[key].strength_in_mg
                 )
+                
             }
             distinctpackforms = [... new Set(packform)]
             distinctstrengths = [... new Set(strengths)]
             distinctmanufacturers = [... new Set(manufacturer)]
-            console.log(distinctstrengths)
+            console.log(finalmed)
         })
         setTimeout(function(){
-        dispatch(updateselectedmed(distinctmanufacturers, distinctpackforms, distinctstrengths, userinput,userinputintro))
+        dispatch(updateselectedmed(finalmed, distinctmanufacturers, distinctpackforms, distinctstrengths, userinput,userinputintro))
         },1000)
         // browserHistory.push('/prices')
     }

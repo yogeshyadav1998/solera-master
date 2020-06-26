@@ -136,6 +136,7 @@ class Autocomplete extends Component {
                 <div className="prescriptioninput">
                     <div className="input_section" >
                     <input
+                    className="druginput"
                     style={{width:"100%"}}
                     id={this.props.id}
                     placeholder="Type a drug name (like Atorvastin,Sildenafil,etc)"

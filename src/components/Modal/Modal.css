@@ -2,12 +2,15 @@
     position: fixed;
     z-index: 500;
     background-color: rgba(0,0,0,0);
-    height: 60%;
-    width: 100%;
-    top: 30%;
-    left: 0%;
+    height: 50%;
+    width: 60%;
+    top: 25%;
+    left: 20%;
+    background-color: rgb(188, 194, 193);
     margin: auto;
     box-sizing: border-box;
     transition: all 0.5s ease-out;
+    overflow: scroll;
+    border: 2px solid grey;
 }
 

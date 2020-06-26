@@ -24,7 +24,7 @@ class prescriptionpricecard extends Component{
         this.setState({manufacturer: event.target.value})
         setTimeout(() => {
             this.props.onfetchfinalmed(this.props.medicine.medName,this.state.manufacturer,this.state.packform,this.state.strength);
-        }, 100);
+        }, 50);
         
     }
 
@@ -32,7 +32,7 @@ class prescriptionpricecard extends Component{
         this.setState({packform: event.target.value})
         setTimeout(() => {
             this.props.onfetchfinalmed(this.props.medicine.medName,this.state.manufacturer,this.state.packform,this.state.strength);
-        }, 100);
+        }, 50);
         
     }
 
@@ -40,7 +40,7 @@ class prescriptionpricecard extends Component{
         this.setState({strength: event.target.value})
         setTimeout(() => {
             this.props.onfetchfinalmed(this.props.medicine.medName,this.state.manufacturer,this.state.packform,this.state.strength);
-        }, 100);
+        }, 50);
     }
 
     setmanufacturer = () =>{
@@ -112,7 +112,7 @@ class prescriptionpricecard extends Component{
                     <p className="prescription_filter_heading">MEDICINE OPTIONS</p>
                     <div className="prescription_filters">
                     <select className="filter" defaultValue="" name="manufacturers" onChange={this.handlemanufacturerChange}>
-                    <option value="" disabled selected>Select Manufacturer</option>
+                    <option value="" selected>All</option>
                     {manufacturerlist}
                     </select>
                     <select className="filter" defaultValue="" name="pack_form" onChange={this.handlepackformChange}  >
@@ -121,6 +121,7 @@ class prescriptionpricecard extends Component{
                     {packformlist}
                     </select>
                     <select className="filter" defaultValue="" name="strength" onChange={this.handlestrengthChange} >
+                    <option value="" selected>All</option>
                     {strengthlist}
                     </select>
                     </div>

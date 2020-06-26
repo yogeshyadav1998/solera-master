@@ -4,16 +4,16 @@
     margin: 10px ;
 }
 
-
 .input_section{
     display: block ;
     width: 95%;
 }
 
-
-
 .submitbutton{
     background-color: rgb(80, 194, 105);
     padding: 5px 10px;
     margin: auto 5px;
+    border: 2px solid grey;
+    border-radius: 5px;
+    cursor: pointer;
 }

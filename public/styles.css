@@ -7,43 +7,50 @@
 .title{
   text-align: center;
   margin-top: 5%;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
 .title2{
   text-align: center;
   margin-top: 1%;
+  font-family: cursive;
 }
+
 .page {
-  background-color: #f0e130;
+  background-color: #d0dddc;
   height: 100%;
   margin: auto -16px;
   padding: 16px 32px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 10 0 0 0 rgba(0, 0, 0, 0.3);
 }
 
 .top{
   text-align: center;
 }
 
-input{
-  /* margin-top: 4%; */
-  /* margin-left: 20%; */
+/* input{
   border: 1px solid #999;
   padding: 0.5rem;
   height: 40px;
-}
+} */
 
-.search{
+.searchbutton{
   color: white;
-  background-color: blue;
-  height: 40px;
-  width: 15%;
+  font-size: 1rem;
+  background-color: rgb(26, 112, 161);
+  border: 2px solid grey;
+  padding: 10px;
+  height: 100%;
+  border-radius: 5px;
+  margin: auto 5px;
+  cursor: pointer;
 }
 
 html {
   font-family: "Montserrat", sans-serif;
 }
 body {
-  background: white;
+  background:  #d0dddc;
   padding: 0 16px;
 }
 
@@ -51,7 +58,6 @@ header {
   background-color: #f0e130;
   margin: auto -16px;
   padding: 16px 32px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 }
 
 .inputsearch{
@@ -68,7 +74,7 @@ header {
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 }
 .heading{
-  background-color: #f0e130;
+  background-color: #168d83;
   margin: auto -16px;
   padding: 20px 32px;
 }
@@ -133,6 +139,13 @@ tbody tr:hover {
   background-color: #eee;
 }
 
+option{
+  background-color: rgb(115, 216, 216);
+}
+
+option :hover :focus :active{
+  background-color: rgb(36, 139, 131);
+}
 
 .no-suggestions {
   color: black;
@@ -157,7 +170,7 @@ tbody tr:hover {
 
 .suggestion-active,
 .suggestions li:hover {
-  background-color: rgb(3, 3, 240);
+  background-color: rgb(33, 136, 131);
   color: white;
   cursor: pointer;
   font-weight: 700;

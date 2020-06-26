@@ -7,7 +7,7 @@ import Page from '../../components/homepage/Page'
 function home (){
     return(
         <div>
-        <Topheading />
+        {/* <Topheading /> */}
         <Heading />
         <Page />
         </div>

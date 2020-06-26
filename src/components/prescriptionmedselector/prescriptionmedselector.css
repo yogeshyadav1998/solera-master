@@ -7,13 +7,11 @@
 }
 
 .prescription_filter_section{
-    background-color: rgb(228, 216, 114);
     display: block;
     text-align: center;
-    width: 70%;
+    width: 100%;
     margin: auto;
     padding: 10px;
-    border: 2px solid grey;
 }
 
 .prescription_filter_heading{
@@ -28,4 +26,5 @@
     width: 70%;
     margin: auto;
     height: 5vh;
+    border: 1px solid grey;
 }
