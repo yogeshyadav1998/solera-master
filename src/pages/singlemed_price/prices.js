@@ -22,6 +22,7 @@ class prices extends Component{
         this.handlemanufacturerChange = this.handlemanufacturerChange.bind(this);
         this.handlepackformChange = this.handlepackformChange.bind(this);
         this.handleinformationtypeChange = this.handleinformationtypeChange.bind(this);
+        this.handlestrengthChange = this.handlestrengthChange.bind(this);
       }
 
     handlemanufacturerChange(event) {
@@ -39,6 +40,14 @@ class prices extends Component{
         }, 500);
         
     }
+
+    handlestrengthChange(event){
+        this.setState({strength: event.target.value})
+        setTimeout(() => {
+            this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform,this.state.strength);
+        }, 50);
+    }
+
     handleinformationtypeChange(event) {
         this.setState({informationtype: event.target.value})  
     }
@@ -61,6 +70,23 @@ class prices extends Component{
                 // console.log(medicine.manufacturer)
             })
         )
+
+        let strengthlist;
+        if(this.props.strengths){
+            strengthlist= (
+            
+            this.props.strengths.map((strength, index)=>{
+                return(
+                <option value={strength} key={index}>{strength}</option>
+                )
+                // console.log(medicine.manufacturer)
+            })
+        )}else{
+            strengthlist=(
+                <option value={""} >not available</option>
+            )
+        }
+
         let pricelist;
         if(this.props.loadingprice){
             pricelist=(
@@ -80,13 +106,13 @@ class prices extends Component{
             ))
         }
 
-        let drugpricessection;
+        let drugprices_section;
         if(this.props.loading){
-            drugpricessection=(
+            drugprices_section=(
                 <Spinner/>
             )
         }else{
-            drugpricessection=(
+            drugprices_section=(
                 <div>
                     <DrugInfo drugname={this.props.userinput} drugintroduction={this.props.userinputintro} />
                 <div>
@@ -101,10 +127,15 @@ class prices extends Component{
                     <option value="" disabled selected>Select Pack Form</option>
                     {packformlist}
                     </select>
-                    <select className="filter" defaultValue="" name="information_type" onChange={this.handleinformationtypeChange} >
+                    <select className="filter" defaultValue="" name="strength" onChange={this.handlestrengthChange} >
+                    <option value="" disabled selected>Select Strength</option>
+                    <option value="" selected>All</option>
+                    {strengthlist}
+                    </select>
+                    {/* <select className="filter" defaultValue="" name="information_type" onChange={this.handleinformationtypeChange} >
                     <option value="prices" selected>prices</option>
                     <option value="druginfo">Drug Information</option>
-                    </select>
+                    </select> */}
                 </div>
                 <div className="information_section">
                     {this.state.informationtype== "prices" ? pricelist : this.state.informationtype=="druginfo"? <Drugcompleteinfo drug={this.props.mainmed} /> : null}
@@ -117,7 +148,7 @@ class prices extends Component{
         return(
             <div>
                 <Header/>
-                {drugpricessection}
+                {drugprices_section}
             </div>
         )
     }
@@ -130,6 +161,7 @@ const mapStateToProps = state =>{
         userinputintro: state.singledrug.userinputintro,
         manufacturers: state.singledrug.manufacturers,
         packforms: state.singledrug.packforms,
+        strengths: state.singledrug.strengths,
         finalmed: state.singledrug.finalmed,
         mainmed: state.singledrug.mainmed,
         loading: state.singledrug.loading,

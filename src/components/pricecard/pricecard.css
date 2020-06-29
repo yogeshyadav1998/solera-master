@@ -1,12 +1,13 @@
 .pricecard{
     margin: 50px auto;
-    display: block;
+    display: flex;
     width: 90%;
     border-bottom: 1px solid grey;
 }
 
 .names_section{
-    display: flex;
+    width: 50%;
+    display: Block;
 }
 
 .productname{
@@ -25,25 +26,53 @@
 .price_section{
     width: 100%;
     margin: 20px;
-    justify-content: center;
-    display: flex;
+    text-align: center;
+    display: block;
 }
 
 .pricearea{
+     
     text-align: center;
-    width: 33%;
 }
 
-.price_text{
-    margin: auto;
-    font-size: 1.5rem;
+.minimumprice_section{
+    margin-bottom: 5px;
 }
-.replacebutton{
-    height: 100%;
-    padding: auto;
-    cursor: pointer;
-    background-color: rgb(26, 112, 161);
+
+.minimumpricearea{
+    width: 30%;
+    background-color: rgb(66, 172, 166);
+    margin: auto;
+    padding: 5px;
     border: 2px solid grey;
-    padding: 10px;
+    border-radius: 10px;
+}
+
+.remaninigprice_section{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.remainingpricearea{
+    display: block;
+    width: 25%;
+    text-align: center;
+    padding: 3px;
+    border: 1px solid grey;
+    border-radius: 7px;
+}
+
+
+.replacebutton{
+    color: white;
+    padding: 5px;
+    margin: 5px;
+    width: 20%;
+    cursor: pointer;
+    background-color: rgb(42, 90, 161);
+    border: 2px solid grey;
     border-radius: 10px;
 }
