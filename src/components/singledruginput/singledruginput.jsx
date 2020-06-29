@@ -89,7 +89,7 @@ class Autocomplete extends Component {
   myfunction=()=>{
     var input=document.getElementById('input').value
     console.log(input)
-    this.props.onselectmedicine(input);
+    this.props.onselectmedicine(input,this.props.suggestions[0]);
     // const url = "http://127.0.0.1:5000/api/data_merged/get_medicinesSuggestions?input=" + input
     // axios.get(url)
     // .then(response => {
@@ -178,7 +178,7 @@ const mapStateToProps = state =>{
 const mapDispatchToProps = dispatch =>{
   return{
     onfetchsuggestions: (input) => dispatch(action.fetchsuggestions(input)),
-    onselectmedicine: (input) => dispatch(action.selectmedicine(input))
+    onselectmedicine: (input, firstsuggestion) => dispatch(action.selectmedicine(input, firstsuggestion))
   }
 }
 

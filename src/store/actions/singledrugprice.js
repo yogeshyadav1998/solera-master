@@ -1,5 +1,4 @@
 import * as actiontype from './actiontypes';
-// import { browserHistory } from 'react-router';
 import axios from 'axios';
 
 export const updatesuggestions = (suggestions) =>{
@@ -48,9 +47,11 @@ export const updateselectedmed = (finalmed, manufacturers, packforms, strengths,
     }
 }
 
-export const selectmedicine = (userinput) =>{
+export const selectmedicine = (userinput,firstsuggestion) =>{
     return dispatch =>{
         dispatch(updateselectedmedstart())
+        console.log(firstsuggestion)
+        let medname='';
         let finalmed = [];
         let manufacturer = [];
         let packform = [];
@@ -65,6 +66,7 @@ export const selectmedicine = (userinput) =>{
         })
         .then(response =>{
             console.log(response)
+            medname = response.data.output[0].medName
             userinputintro = response.data.output[0].Introduction
             console.log(userinputintro)
             for(let key in response.data.output){
@@ -85,10 +87,38 @@ export const selectmedicine = (userinput) =>{
             distinctmanufacturers = [... new Set(manufacturer)]
             console.log(finalmed)
         })
+        .catch(
+            axios.post(url,{
+                input: firstsuggestion
+            })
+            .then(response =>{
+                console.log(response)
+                medname = response.data.output[0].medName
+                userinputintro = response.data.output[0].Introduction
+                console.log(userinputintro)
+                for(let key in response.data.output){
+                    finalmed=response.data.output
+                    packform.push(
+                        response.data.output[key]['pack form']
+                    )
+                    manufacturer.push(
+                        response.data.output[key].manufacturer
+                    )
+                    strengths.push(
+                        response.data.output[key].strength_in_mg
+                    )
+                    
+                }
+                distinctpackforms = [... new Set(packform)]
+                distinctstrengths = [... new Set(strengths)]
+                distinctmanufacturers = [... new Set(manufacturer)]
+                console.log(finalmed)
+            })
+
+        )
         setTimeout(function(){
-        dispatch(updateselectedmed(finalmed, distinctmanufacturers, distinctpackforms, distinctstrengths, userinput,userinputintro))
+        dispatch(updateselectedmed(finalmed, distinctmanufacturers, distinctpackforms, distinctstrengths, medname,userinputintro))
         },1000)
-        // browserHistory.push('/prices')
     }
 }
 
