@@ -146,9 +146,9 @@ export const fetch_finalmed = (medname,manufacturer,packform,strength) =>{
         const url = "http://127.0.0.1:5000/api/filter_api"
         axios.post(url,{
             input: medname,
-            manufacturer: [manufacturer],
-            strength: [strength],
-            pack_form:[packform],
+            manufacturer: manufacturer,
+            strength: strength,
+            pack_form: packform,
             prescription:['']  
         })
         .then(response =>{

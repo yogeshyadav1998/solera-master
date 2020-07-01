@@ -33,6 +33,7 @@ const singledrugpricereducer = (state = initialstate,action) =>{
                 ...state,
                 manufacturers:action.manufacturer,
                 finalmed: action.finalmed,
+                mainmed: action.finalmed[0],
                 packforms: action.packform,
                 strengths: action.strength,
                 userinput:action.userinput,
