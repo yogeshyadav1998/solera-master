@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Card,Row, Col, Icon, Avatar } from 'antd';
 import './prescriptioninput.css';
+import { withTranslation } from 'react-i18next';
 import * as action from '../../store/actions/index';
 
 class Autocomplete extends Component {

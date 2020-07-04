@@ -5,9 +5,12 @@
     import {connect} from 'react-redux';
     import { Link } from 'react-router-dom';
     import * as action from '../../store/actions/index';
-
+    import { useTranslation } from 'react-i18next';
+    
     function App(props) {
     const [fields, setFields] = useState([{ value: null }]);
+
+    const { t } = useTranslation();
 
     function handleAdd() {
         const values = [...fields];
@@ -28,7 +31,7 @@
 
     return (
         <div className="prescriptioninput_section">
-        <p className="section_heading"> For Prescription</p>
+        <p className="section_heading">{t('homeheading.2')}</p>
         {fields.map((field, idx) => {
             return (
             <div key={`${field}-${idx}`} className="prescriptioninput_item" >

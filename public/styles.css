@@ -51,7 +51,6 @@ html {
 }
 body {
   background:  #d0dddc;
-  padding: 0 16px;
 }
 
 header {
@@ -73,11 +72,7 @@ header {
   padding: 16px 32px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 }
-.heading{
-  background-color: #168d83;
-  margin: auto -16px;
-  padding: 20px 32px;
-}
+
 
 header h1 {
   color: #fff;
@@ -93,6 +88,7 @@ header h1 {
 th {
   cursor: pointer;
 }
+
 body {
   font-family: 'open sans', sans-serif;
   font-size: 16px;

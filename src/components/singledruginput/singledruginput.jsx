@@ -4,9 +4,11 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Card,Row, Col, Icon, Avatar } from 'antd';
-
+import { useTranslation } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 import './singledruginput.css';
 import * as action from '../../store/actions/index';
+
 
 class Autocomplete extends Component {
 
@@ -27,26 +29,29 @@ class Autocomplete extends Component {
     };
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.suggestions !== this.props.suggestions) {
+      this.updatesuggestions()
+    }
+    
+  }
+
+  updatesuggestions = () =>{
+    this.setState({
+      filteredSuggestions: this.props.suggestions
+    })
+    console.log(this.state.filteredSuggestions)
+  }
+  
   onChange = e => {
-    // const { suggestions } = this.props;
     const userInput = e.currentTarget.value;
     this.props.onfetchsuggestions(userInput);
-    
-    // Filter our suggestions that don't contain the user's input
-    // const filteredSuggestions = suggestions.f ilter(
-    //   suggestion =>
-    //     suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
-  console.log("hii")  // );
-    
     this.setState({
       activeSuggestion: 0,
       showSuggestions: true,
-      showprices: false,
-      filteredSuggestions: this.props.suggestions,
+      // filteredSuggestions: this.props.suggestions,
       userInput: e.currentTarget.value
     });
-    
-    console.log(this.state.filteredSuggestions)
   };
 
   onClick = e => {
@@ -86,22 +91,16 @@ class Autocomplete extends Component {
       this.setState({ activeSuggestion: activeSuggestion + 1 });
     }
   };
+
+
   myfunction=()=>{
     var input=document.getElementById('input').value
     console.log(input)
     this.props.onselectmedicine(input,this.props.suggestions[0]);
-    // const url = "http://127.0.0.1:5000/api/data_merged/get_medicinesSuggestions?input=" + input
-    // axios.get(url)
-    // .then(response => {
-    //   this.setState({
-    //     showprices:true,
-    //     selectedmed: response.data.result[0]
-    //   })
-    //   console.log(this.state)
-    // })
   }
 
   render() {
+    const { t } = this.props;
     const {
       onChange,
       onClick,
@@ -149,7 +148,7 @@ class Autocomplete extends Component {
     return (
       <Fragment>
         <div className="singledruginput">
-        <p className="section_heading">For Single Drug</p>
+        <p className="section_heading">{t('homeheading.1')}</p>
         <input
           className="druginput"
           style={{width:"50%"}}
@@ -183,4 +182,4 @@ const mapDispatchToProps = dispatch =>{
 }
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(Autocomplete);
+export default withTranslation()(connect(mapStateToProps,mapDispatchToProps)(Autocomplete));

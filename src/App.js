@@ -1,5 +1,4 @@
 import React,{useEffect, Component} from "react";
-
 import Home from './pages/home/home';
 import SinglemedPrice from './pages/singlemed_price/prices';
 import PrescriptionPrice from './pages/prescription_price/prescriptionprice';

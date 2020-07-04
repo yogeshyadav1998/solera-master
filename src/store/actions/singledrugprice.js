@@ -2,7 +2,6 @@ import * as actiontype from './actiontypes';
 import axios from 'axios';
 
 export const updatesuggestions = (suggestions) =>{
-    console.log('hello')
     return{
         type: actiontype.Fetch_SUGGESTIONS,
         data: suggestions
@@ -16,7 +15,6 @@ export const fetchsuggestions = (input) =>{
         const url="http://127.0.0.1:5000/api/data_merged/get_medicinesSuggestions?input=" + input
         axios.get(url)
         .then( response =>{
-            // console.log(response)
             for(let key in response.data.result){
                 suggestions.push(
                     response.data.result[key].medName
@@ -28,7 +26,6 @@ export const fetchsuggestions = (input) =>{
     }
 }
 export const updateselectedmedstart = ()=> {
-    console.log('hello')
     return{
         type: actiontype.UPDATE_SELECTED_MEDICINE_START
     }

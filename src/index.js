@@ -1,6 +1,6 @@
-import React from "react";
+import React, {Suspense} from "react";
 import ReactDOM from "react-dom";
-
+import './i18next';
 import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware, compose, combineReducers} from 'redux';
@@ -23,7 +23,9 @@ const store = createStore(rootreducer, composeEnhancers(applyMiddleware(thunk)))
 const app = (
      <Provider store = {store}>
          <BrowserRouter>
-             <App/>
+            <Suspense fallback={(<div>Loading ---</div>)}>
+                <App/>
+            </Suspense> 
          </BrowserRouter>
      </Provider>
  )
