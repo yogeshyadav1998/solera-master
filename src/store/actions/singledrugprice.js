@@ -1,10 +1,11 @@
 import * as actiontype from './actiontypes';
 import axios from 'axios';
 
-export const updatesuggestions = (suggestions) =>{
+export const updatesuggestions = (suggestions,input) =>{
     return{
         type: actiontype.Fetch_SUGGESTIONS,
-        data: suggestions
+        data: suggestions,
+        input: input
     }
 }
 
@@ -22,7 +23,7 @@ export const fetchsuggestions = (input) =>{
             }
         })
         console.log(suggestions)
-        dispatch(updatesuggestions(suggestions))
+        dispatch(updatesuggestions(suggestions, input))
     }
 }
 export const updateselectedmedstart = ()=> {
@@ -156,5 +157,12 @@ export const fetch_finalmed = (medname,manufacturer,packform,strength) =>{
         setTimeout(function(){
             dispatch(fetch_finalmed_success(finalmed))
         },1000)
+    }
+}
+
+export const set_detail_req_med = (medicine) =>{
+    return{
+        type: actiontype.SET_DETAIL_REQ_MED,
+        medicine: medicine
     }
 }

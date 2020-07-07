@@ -1,0 +1,12 @@
+.brands_section{
+    width: 50%;
+    margin: auto;
+    background-color: rgb(156, 165, 34);
+    text-align: center;
+}
+
+.brands_heading{
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: cursive;
+}

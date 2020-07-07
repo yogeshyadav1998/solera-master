@@ -12,6 +12,7 @@ const initialstate ={
     prescriptionrequired: '',
     finalmed: [],
     mainmed:'',
+    detail_req_med:'',
     loading: false,
     loadingprice: false
 }
@@ -21,7 +22,8 @@ const singledrugpricereducer = (state = initialstate,action) =>{
         case actiontype.Fetch_SUGGESTIONS:
             return{
                 ...state,
-                suggestions:action.data
+                suggestions:action.data,
+                userinput: action.input
             }
         case actiontype.UPDATE_SELECTED_MEDICINE_START:
             return{
@@ -51,6 +53,11 @@ const singledrugpricereducer = (state = initialstate,action) =>{
                 finalmed: action.finalmed,
                 mainmed: action.finalmed[0],
                 loadingprice: false
+            }
+        case actiontype.SET_DETAIL_REQ_MED:
+            return{
+                ...state,
+                detail_req_med: action.medicine
             }
         default:
             return state

@@ -1,6 +1,7 @@
 import React from "react";
 import Singledruginput from "../singledruginput/singledruginput";
 import Prescriptioninput from "../prescription_section/prescription";
+import Brandcompared from '../brandcompared/brandcompared';
 import { useTranslation } from 'react-i18next';
 
 function Page() {
@@ -11,7 +12,8 @@ function Page() {
       <h1 className="title">{t('title.1')}</h1>
       <h4 className="title2">{t('title.2')}</h4>
       <Singledruginput/>
-      <Prescriptioninput/>
+      <Brandcompared/>
+      {/* <Prescriptioninput/> */}
    </div> 
    );
 }

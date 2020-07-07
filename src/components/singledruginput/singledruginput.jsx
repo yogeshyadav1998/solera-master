@@ -29,19 +29,17 @@ class Autocomplete extends Component {
     };
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.suggestions !== this.props.suggestions) {
-      this.updatesuggestions()
-    }
-    
-  }
+  // componentWillReceiveProps(nextProps){
+  //   console.log({"Next Props": nextProps})
+  //   this.updatesuggestions(nextProps.suggestions)
+  // }
 
-  updatesuggestions = () =>{
-    this.setState({
-      filteredSuggestions: this.props.suggestions
-    })
-    console.log(this.state.filteredSuggestions)
-  }
+  // updatesuggestions = (suggestions) =>{
+  //   console.log(this.state.filteredSuggestions)
+  //   this.setState({
+  //     filteredSuggestions: suggestions
+  //   })
+  // }
   
   onChange = e => {
     const userInput = e.currentTarget.value;
@@ -49,7 +47,7 @@ class Autocomplete extends Component {
     this.setState({
       activeSuggestion: 0,
       showSuggestions: true,
-      // filteredSuggestions: this.props.suggestions,
+      filteredSuggestions: this.props.suggestions,
       userInput: e.currentTarget.value
     });
   };
@@ -100,6 +98,7 @@ class Autocomplete extends Component {
   }
 
   render() {
+    console.log(this.state)
     const { t } = this.props;
     const {
       onChange,
@@ -170,7 +169,8 @@ class Autocomplete extends Component {
 
 const mapStateToProps = state =>{
   return{
-    suggestions: state.singledrug.suggestions
+    suggestions: state.singledrug.suggestions,
+    userInput: state.singledrug.userinput
   }
 }
 

@@ -127,7 +127,7 @@ class prices extends Component{
                     return(
                         <Pricecard 
                             medicine = {medicine}
-                            id={index}
+                            id= {index}
                             singlemed = {true}
                         />
                     )
@@ -179,10 +179,10 @@ class prices extends Component{
                             </select> */}
                         </div>
                         <div className="information_section">
-                            <div className="buttons">
+                            {/* <div className="buttons">
                                 <button className="infobutton" value="prices" onClick={this.handleinformationtypeChange}>Prices</button>
                                 <button className="infobutton" value="druginfo" onClick={this.handleinformationtypeChange}>Druginformation</button>
-                            </div>
+                            </div> */}
                             {this.state.informationtype== "prices" ? pricelist : this.state.informationtype=="druginfo"? <Drugcompleteinfo drug={this.props.mainmed} /> : null}
                         </div>
                     </div>

@@ -1,14 +1,49 @@
+.info_toggler{
+    text-align: center;
+}
+
+.infotogglebutton{
+    color: rgb(34, 73, 67) ;
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin: 0px 30px;
+    border-bottom: 3px solid rgb(15, 86, 86) ;
+}
+
+.infotogglebutton :active :focus :hover{
+    border: none;
+    outline: 0;
+    background: tomato;
+}
+
 .info_section{
     width: 70%;
     margin: auto;
 }
 
-.info_content{
-    width: 100%;
-    margin: 10vh 5vh;
+
+.info_part{
+    background-color: rgb(131, 170, 170);
+    margin: 5px;
+    display: flex;
+    justify-content: start;
+    border: 1px solid grey;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 .info_heading{
-    font-size: x-large;
-    color: rgb(15, 86, 86);
+    font-size: 1.5rem;
+    color: rgb(18, 92, 92);
+    margin: 20px;
 }
+
+.info_content{
+    font-size: 1rem;
+    color: rgb(17, 77, 77);
+    margin: 25px;
+  }

@@ -6,15 +6,19 @@ import './pricecard.css';
 
 class pricecard extends Component{
 
-    replacemed = () =>{
-        console.log(this.props.medid)
-        console.log(this.props.id)
-        let finalmed = this.props.finalmed
-        let medicines = this.props.medicines
-        medicines[this.props.medid] = finalmed[this.props.id]
-        console.log(medicines)
-        this.props.onreplacemed(medicines)
-        this.props.toggleshowfilter()
+    // replacemed = () =>{
+    //     console.log(this.props.medid)
+    //     console.log(this.props.id)
+    //     let finalmed = this.props.finalmed
+    //     let medicines = this.props.medicines
+    //     medicines[this.props.medid] = finalmed[this.props.id]
+    //     console.log(medicines)
+    //     this.props.onreplacemed(medicines)
+    //     this.props.toggleshowfilter()
+    // }
+
+    setmedinfo = () =>{
+        this.props.onsetdetailreqmed(this.props.medicine)
     }
 
     covertnumber(value){
@@ -98,10 +102,14 @@ class pricecard extends Component{
                     <div className="remaninigprice_section">
                         {remainingpricecards}
                     </div>
-                    <Link to="/prescriptionprice">
-                        <button className="replacebutton"
-                            onClick={this.replacemed}>{this.props.medicine.prescription_req == "Not Available" ? "Add": "Upload Rx" }</button>
+                    <Link to='/druginformation'>
+                    <button className="infobutton"
+                        onClick={this.setmedinfo}>Drug Details
+                    </button>
                     </Link>
+                    <button className="replacebutton"
+                        onClick={this.replacemed}>{this.props.medicine.prescription_req == "Not Available" ? "Add": "Upload Rx" }
+                    </button>
                 </div>
             </div>
         )
@@ -118,6 +126,7 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch =>{
     return{
+        onsetdetailreqmed: (medicine) => dispatch(action.set_detail_req_med(medicine)),
         onreplacemed: (medicines) => dispatch(action.replacemed(medicines))
     }
 }

@@ -2,7 +2,12 @@
     margin: 50px auto;
     display: flex;
     width: 90%;
-    border-bottom: 1px solid grey;
+    padding: 10px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    -webkit-box-shadow: 10px 10px 28px -17px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 28px -17px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 28px -17px rgba(0,0,0,0.75);
 }
 
 .names_section{
@@ -25,7 +30,7 @@
 
 .price_section{
     width: 100%;
-    margin: 20px;
+    margin: 10px;
     text-align: center;
     display: block;
 }
@@ -63,6 +68,17 @@
     padding: 3px;
     border: 1px solid grey;
     border-radius: 7px;
+}
+
+.infobutton{
+    color: white;
+    padding: 5px;
+    margin: 5px;
+    /* width: 20%; */
+    cursor: pointer;
+    background-color: rgb(66, 172, 166);
+    border: 2px solid grey;
+    border-radius: 10px;
 }
 
 
