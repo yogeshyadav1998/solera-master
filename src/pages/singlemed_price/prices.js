@@ -4,6 +4,7 @@ import Header from '../../components/header/Heading2';
 import DrugInfo from '../../components/druginfo/druginfo';
 import Drugcompleteinfo from '../../components/drugcompleteinfo/drugcompleteinfo';
 import Spinner from '../../components/spinner/spinner';
+import Singledruginput from '../../components/singledruginput/singledruginput';
 import Pricecard from '../../components/pricecard/pricecard';
 import './prices.css';
 import * as action from '../../store/actions/index';
@@ -23,7 +24,11 @@ class prices extends Component{
         this.handlepackformChange = this.handlepackformChange.bind(this);
         this.handleinformationtypeChange = this.handleinformationtypeChange.bind(this);
         this.handlestrengthChange = this.handlestrengthChange.bind(this);
-      }
+    }
+
+    componentDidMount(){
+
+    }
 
     handlemanufacturerChange(event) {
         console.log(event.target.value)
@@ -143,7 +148,8 @@ class prices extends Component{
         }else{
             drugprices_section=(
                 <div>
-                    <DrugInfo drugname={this.props.userinput} drugintroduction={this.props.userinputintro} />
+                    <Singledruginput/>
+                    {this.props.completeinput ?  <DrugInfo drugname={this.props.userinput} drugintroduction={this.props.userinputintro}/> : null}
                     <div className="singledrug_content">
                         <div className="filter_section">
                             <p className="filter_heading">Filters</p>
@@ -203,6 +209,7 @@ class prices extends Component{
 const mapStateToProps = state =>{
     return{
         userinput: state.singledrug.userinput,
+        completeinput: state.singledrug.completeinput,
         userinputintro: state.singledrug.userinputintro,
         manufacturers: state.singledrug.manufacturers,
         packforms: state.singledrug.packforms,

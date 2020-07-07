@@ -1,9 +1,8 @@
-import React from 'react';
-
 import * as actiontype from './../actions/actiontypes';
 
 const initialstate ={
     userinput:'',
+    completeinput: '',
     userinputintro:'',
     suggestions: [],
     manufacturers: [],
@@ -33,6 +32,7 @@ const singledrugpricereducer = (state = initialstate,action) =>{
         case actiontype.UPDATE_SELECTED_MEDICINE:
             return{
                 ...state,
+                completeinput: action.completeinput,
                 manufacturers:action.manufacturer,
                 finalmed: action.finalmed,
                 mainmed: action.finalmed[0],

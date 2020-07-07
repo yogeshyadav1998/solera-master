@@ -13,8 +13,8 @@ class brandcompared extends Component{
                     <img style={{width:"30%", margin:"0px 10px"}} src="/images/medlife.png"/>
                 </div>
                 <div className="brands_images">
-                    <img style={{width:"30%", margin:"0px 10px"}} src="/images/medifarm.png"/>
-                    <img style={{width:"30%", margin:"0px 10px"}} src="/images/pharmeasy.png"/>
+                    <img style={{width:"30%", margin:"0px 20px"}} src="/images/medifarm.png"/>
+                    <img style={{width:"20%", margin:"0px 20px"}} src="/images/pharmeasy.png"/>
                 </div>
             </div>
         )

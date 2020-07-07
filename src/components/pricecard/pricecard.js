@@ -22,7 +22,6 @@ class pricecard extends Component{
     }
 
     covertnumber(value){
-        console.log(value)
         if(Number.isNaN(value)){
             return 10000
         }
@@ -90,11 +89,13 @@ class pricecard extends Component{
 
         return(
             <div className="pricecard">
+                <Link style={{textDecoration : "none", width:"50%"}} to="/druginformation" onClick={this.setmedinfo}>
                 <div className="names_section">
                     <p className="productname">{this.props.medicine.medName}</p>
                     <p className="manufacturername">mfr: {this.props.medicine.manufacturer}</p>
                     {this.props.medicine.prescription_req == "Not Available" ? null : <p style={{color: "white",width: "35%", padding:"5px" , background:"rgb(66, 172, 166)", border:"1px solide grey", borderRadius:"10px"}}>Rx Required</p> }
                 </div>
+                </Link>
                 <div className="price_section" >
                     <div className="minimumprice_section">
                         {minimumpricecard}
@@ -102,11 +103,11 @@ class pricecard extends Component{
                     <div className="remaninigprice_section">
                         {remainingpricecards}
                     </div>
-                    <Link to='/druginformation'>
+                    {/* <Link to='/druginformation'>
                     <button className="infobutton"
                         onClick={this.setmedinfo}>Drug Details
                     </button>
-                    </Link>
+                    </Link> */}
                     <button className="replacebutton"
                         onClick={this.replacemed}>{this.props.medicine.prescription_req == "Not Available" ? "Add": "Upload Rx" }
                     </button>

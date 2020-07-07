@@ -33,7 +33,7 @@ export const updateselectedmedstart = ()=> {
 }
 
 
-export const updateselectedmed = (finalmed, manufacturers, packforms, strengths, userinput,userinputintro)=> {
+export const updateselectedmed = (finalmed, manufacturers, packforms, strengths, userinput,userinputintro, completeinput)=> {
     return{
         type: actiontype.UPDATE_SELECTED_MEDICINE,
         finalmed: finalmed,
@@ -41,7 +41,8 @@ export const updateselectedmed = (finalmed, manufacturers, packforms, strengths,
         packform: packforms,
         strength: strengths,
         userinput: userinput,
-        userinputintro: userinputintro
+        userinputintro: userinputintro,
+        completeinput: completeinput
     }
 }
 
@@ -49,6 +50,7 @@ export const selectmedicine = (userinput,firstsuggestion) =>{
     return dispatch =>{
         dispatch(updateselectedmedstart())
         console.log(firstsuggestion)
+        let completeinput= true;
         let medname='';
         let finalmed = [];
         let manufacturer = [];
@@ -63,6 +65,7 @@ export const selectmedicine = (userinput,firstsuggestion) =>{
             input: userinput
         })
         .then(response =>{
+            console.log("hello yogesh")
             console.log(response)
             medname = response.data.output[0].medName
             userinputintro = response.data.output[0].Introduction
@@ -83,13 +86,15 @@ export const selectmedicine = (userinput,firstsuggestion) =>{
             distinctpackforms = [... new Set(packform)]
             distinctstrengths = [... new Set(strengths)]
             distinctmanufacturers = [... new Set(manufacturer)]
-            console.log(finalmed)
         })
-        .catch(
-            axios.post(url,{
-                input: firstsuggestion
-            })
+        .catch(err =>{
+            if(err.request){
+                completeinput= false
+                axios.post(url,{
+                    input: firstsuggestion
+                })
             .then(response =>{
+                console.log("hello yadav")
                 console.log(response)
                 medname = response.data.output[0].medName
                 userinputintro = response.data.output[0].Introduction
@@ -110,12 +115,10 @@ export const selectmedicine = (userinput,firstsuggestion) =>{
                 distinctpackforms = [... new Set(packform)]
                 distinctstrengths = [... new Set(strengths)]
                 distinctmanufacturers = [... new Set(manufacturer)]
-                console.log(finalmed)
             })
-
-        )
+        }})
         setTimeout(function(){
-        dispatch(updateselectedmed(finalmed, distinctmanufacturers, distinctpackforms, distinctstrengths, medname,userinputintro))
+        dispatch(updateselectedmed(finalmed, distinctmanufacturers, distinctpackforms, distinctstrengths, medname, userinputintro, completeinput))
         },1000)
     }
 }

@@ -147,7 +147,7 @@ class Autocomplete extends Component {
     return (
       <Fragment>
         <div className="singledruginput">
-        <p className="section_heading">{t('homeheading.1')}</p>
+        {/* <p className="section_heading">{t('homeheading.1')}</p> */}
         <input
           className="druginput"
           style={{width:"50%"}}
