@@ -1,12 +1,16 @@
 .brands_section{
     width: 50%;
     margin: auto;
-    background-color: rgb(156, 165, 34);
     text-align: center;
 }
 
 .brands_heading{
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: 1.5rem;
+    font-weight: 700;
     font-family: cursive;
+}
+
+.brands_images{
+    width: 100%;
+    justify-content: space-between;
 }
