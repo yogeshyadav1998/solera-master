@@ -40,6 +40,7 @@ class Autocomplete extends Component {
   //     filteredSuggestions: suggestions
   //   })
   // }
+
   
   onChange = e => {
     const userInput = e.currentTarget.value;
@@ -63,7 +64,7 @@ class Autocomplete extends Component {
 
   onKeyDown = e => {
     const { activeSuggestion, filteredSuggestions } = this.state;
-
+   
     // User pressed the enter key
     if (e.keyCode === 13) {
       this.setState({
@@ -78,7 +79,10 @@ class Autocomplete extends Component {
         return;
       }
 
-      this.setState({ activeSuggestion: activeSuggestion - 1 });
+      this.setState({
+        userInput: filteredSuggestions[activeSuggestion -1],
+        activeSuggestion: activeSuggestion - 1 });
+  
     }
     // User pressed the down arrow
     else if (e.keyCode === 40) {
@@ -86,7 +90,11 @@ class Autocomplete extends Component {
         return;
       }
 
-      this.setState({ activeSuggestion: activeSuggestion + 1 });
+      this.setState({
+        userInput: filteredSuggestions[activeSuggestion +1],
+        activeSuggestion: activeSuggestion + 1 
+        });
+  
     }
   };
 
