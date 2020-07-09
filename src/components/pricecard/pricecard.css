@@ -4,10 +4,10 @@
     width: 90%;
     padding: 10px;
     border: 1px solid grey;
-    border-radius: 5px;
-    -webkit-box-shadow: 10px 10px 28px -17px rgba(0,0,0,0.75);
-    -moz-box-shadow: 10px 10px 28px -17px rgba(0,0,0,0.75);
-    box-shadow: 10px 10px 28px -17px rgba(0,0,0,0.75);
+    border-radius: 15px;
+    -webkit-box-shadow: -1px 3px 17px 0px rgba(0,0,0,0.55);
+    -moz-box-shadow: -1px 3px 17px 0px rgba(0,0,0,0.55);
+    box-shadow: -1px 3px 17px 0px rgba(0,0,0,0.55);
 }
 
 .names_section{
@@ -18,7 +18,7 @@
 .productname{
     margin: auto;
     font-size: 2rem;
-    color: rgb(7, 119, 119);
+    color: rgb(206, 77, 83);
 }
 
 .manufacturername{
@@ -46,7 +46,7 @@
 
 .minimumpricearea{
     width: 30%;
-    background-color: rgb(66, 172, 166);
+    background-color: rgb(228, 129, 129);
     margin: auto;
     padding: 5px;
     border: 2px solid grey;
@@ -88,7 +88,7 @@
     margin: 5px;
     width: 20%;
     cursor: pointer;
-    background-color: rgb(42, 90, 161);
+    background-color: rgb(84, 169, 209);
     border: 2px solid grey;
     border-radius: 10px;
 }

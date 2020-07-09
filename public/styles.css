@@ -12,12 +12,13 @@
 
 .title2{
   text-align: center;
+  color: rgb(219, 64, 98);
   margin-top: 1%;
   font-family: cursive;
 }
 
 .page {
-  background-color: #d0dddc;
+  background-color: white;
   height: 100%;
   margin: auto -16px;
   padding: 16px 32px;
@@ -37,7 +38,7 @@
 .searchbutton{
   color: white;
   font-size: 1rem;
-  background-color: rgb(26, 112, 161);
+  background-color: rgb(112, 194, 231);
   border: 2px solid grey;
   padding: 10px;
   height: 100%;
@@ -50,14 +51,9 @@ html {
   font-family: "Montserrat", sans-serif;
 }
 body {
-  background:  #d0dddc;
+  background:white;
 }
 
-header {
-  background-color: #f0e130;
-  margin: auto -16px;
-  padding: 16px 32px;
-}
 
 .inputsearch{
   /* margin-left: 30%; */
@@ -166,7 +162,7 @@ option :hover :focus :active{
 
 .suggestion-active,
 .suggestions li:hover {
-  background-color: rgb(33, 136, 131);
+  background-color: rgb(219, 143, 153);
   color: white;
   cursor: pointer;
   font-weight: 700;

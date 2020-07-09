@@ -1,9 +1,10 @@
 .info_toggler{
     text-align: center;
+    margin: 20px auto;
 }
 
 .infotogglebutton{
-    color: rgb(34, 73, 67) ;
+    color: rgb(180, 68, 68) ;
     font-size: 1.5rem;
     font-weight: 700;
     background: none;
@@ -11,13 +12,12 @@
     cursor: pointer;
     padding: 10px;
     margin: 0px 30px;
-    border-bottom: 3px solid rgb(15, 86, 86) ;
 }
 
 .infotogglebutton :active :focus :hover{
     border: none;
     outline: 0;
-    background: tomato;
+    color: rgb(83, 149, 187);
 }
 
 .info_section{
@@ -27,18 +27,20 @@
 
 
 .info_part{
-    background-color: rgb(131, 170, 170);
-    margin: 5px;
+    margin: 10px auto 15px auto;
     display: flex;
     justify-content: start;
     border: 1px solid grey;
     border-radius: 5px;
     overflow: hidden;
+    -webkit-box-shadow: 10px 7px 26px -4px rgba(66,65,63,0.36);
+    -moz-box-shadow: 10px 7px 26px -4px rgba(66,65,63,0.36);
+    box-shadow: 10px 7px 26px -4px rgba(66,65,63,0.36);
 }
 
 .info_heading{
     font-size: 1.5rem;
-    color: rgb(18, 92, 92);
+    color: rgb(196, 97, 97);
     margin: 20px;
 }
 
@@ -47,3 +49,52 @@
     color: rgb(17, 77, 77);
     margin: 25px;
   }
+
+
+
+.info_details{
+    width: 50%;
+}
+
+.info_image{
+    margin: auto;
+}
+
+.info_productname{
+    font-size: 1.5rem;
+    color: rgb(202, 115, 115);
+    margin: 10px;
+}
+
+.info_manufacturername{
+    color: rgb(58, 56, 56);
+    font-size: 1rem;
+    margin: 10px ;
+    font-style: italic;
+}
+
+.info_best_deal{
+    margin: 30px 10px;
+    display: flex;
+    height: 25vh;
+    border: 1px solid grey;
+    border-radius: 15px;
+    overflow: hidden;
+    -webkit-box-shadow: 10px 7px 38px -18px rgba(66,65,63,1);
+    -moz-box-shadow: 10px 7px 38px -18px rgba(66,65,63,1);
+    box-shadow: 10px 7px 38px -18px rgba(66,65,63,1);
+}
+
+.info_best_deal_site{
+    margin: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgb(95, 143, 170);
+}
+
+.info_best_deal_price{
+    margin: 10px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: rgb(60, 121, 60);
+}

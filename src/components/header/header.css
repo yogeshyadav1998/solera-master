@@ -1,8 +1,16 @@
 .heading{
     display: flex;
     width: 100%;
-    background-color: #168d83;
+    height: 10vh;
+    background-color: #e25e5e;
     padding: 20px 32px;
+}
+
+.web_title{
+    position: absolute;
+    left: 10%;
+    font-size: 2rem;
+    font-weight: 700;
 }
 
 .language_selector{
