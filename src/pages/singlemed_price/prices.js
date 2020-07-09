@@ -195,7 +195,7 @@ class prices extends Component{
                                 {strengthlist}
                             </div>
                             <div className="filter">
-                                <p  className="filter_type">Medicine Strength</p>
+                                <p  className="filter_type">Prescription</p>
                                 {prescriptionlist}
                             </div>
                             {/* <select className="filter" defaultValue="" name="manufacturers" onChange={this.handlemanufacturerChange}>

@@ -6,7 +6,7 @@ class drugcompleteinfo extends Component{
     constructor(props){
         super(props);
         this.state={
-            info_type: "overview"
+            info_type: "deals"
         }
         this.setinfotype = this.setinfotype.bind(this)
     }
