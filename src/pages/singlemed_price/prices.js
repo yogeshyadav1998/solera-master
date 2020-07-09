@@ -9,6 +9,7 @@ import Pricecard from '../../components/pricecard/pricecard';
 import './prices.css';
 import * as action from '../../store/actions/index';
 import { Checkbox } from 'antd';
+import prescription from '../../components/prescription_section/prescription';
 
 class prices extends Component{
 
@@ -18,12 +19,14 @@ class prices extends Component{
             manufacturer: [""],
             packform: [""],
             strength: [""],
+            prescription: [""],
             informationtype:'prices'
         };
         this.handlemanufacturerChange = this.handlemanufacturerChange.bind(this);
         this.handlepackformChange = this.handlepackformChange.bind(this);
         this.handleinformationtypeChange = this.handleinformationtypeChange.bind(this);
         this.handlestrengthChange = this.handlestrengthChange.bind(this);
+        this.handleprescriptionchange = this.handleprescriptionchange.bind(this);
     }
 
     componentDidMount(){
@@ -85,6 +88,24 @@ class prices extends Component{
     handleinformationtypeChange(event) {
         this.setState({informationtype: event.target.value})  
     }
+
+    handleprescriptionchange(event){
+        console.log(this.state.prescription.indexOf(event.target.value))
+        if(this.state.prescription.indexOf(event.target.value) === -1){
+            this.setState({prescription: this.state.prescription.concat(event.target.value)})
+            setTimeout(() => {
+                this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform,this.state.strength,this.state.prescription);
+            }, 500);
+        }else{
+            var index = this.state.prescription.indexOf(event.target.value)
+            console.log(index)
+            var prescription = this.state.prescription.filter( e => e != event.target.value)
+            this.setState({prescription: prescription})
+            setTimeout(() => {
+                this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform,this.state.strength,this.state.prescription);
+            }, 500);
+        }
+    }
     
     render(){
         let manufacturerlist = (
@@ -120,6 +141,14 @@ class prices extends Component{
                 <option value={""} >not available</option>
             )
         }
+
+        let prescriptionlist=(
+           <div>
+               <Checkbox style={{margin: "5px"}} value={"Yes"} onChange={this.handleprescriptionchange} className="manufacturer" > Required</Checkbox>
+               <Checkbox style={{margin: "5px"}} value={"Not Available"} onChange={this.handleprescriptionchange} className="manufacturer" > Not Required</Checkbox>
+           </div>
+               
+        )
 
         let pricelist;
         if(this.props.loadingprice){
@@ -164,6 +193,10 @@ class prices extends Component{
                             <div className="filter">
                                 <p  className="filter_type">Medicine Strength</p>
                                 {strengthlist}
+                            </div>
+                            <div className="filter">
+                                <p  className="filter_type">Medicine Strength</p>
+                                {prescriptionlist}
                             </div>
                             {/* <select className="filter" defaultValue="" name="manufacturers" onChange={this.handlemanufacturerChange}>
                             <option value="" disabled selected>Select Manufacturer</option>
@@ -223,7 +256,7 @@ const mapStateToProps = state =>{
   
   const mapDispatchToProps = dispatch =>{
     return{
-        onfetchfinalmed: (userinput, manufacturer, packform, strength) => dispatch(action.fetch_finalmed(userinput, manufacturer, packform, strength))
+        onfetchfinalmed: (userinput, manufacturer, packform, strength,prescription) => dispatch(action.fetch_finalmed(userinput, manufacturer, packform, strength, prescription))
     }
   }
 

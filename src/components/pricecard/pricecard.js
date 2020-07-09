@@ -109,7 +109,7 @@ class pricecard extends Component{
                     </button>
                     </Link> */}
                     <button className="replacebutton"
-                        onClick={this.replacemed}>{this.props.medicine.prescription_req == "Not Available" ? "Add": "Upload Rx" }
+                        onClick={this.replacemed}>{this.props.medicine.prescription_req == "Not Available" ? "Add": "Add to cart" }
                     </button>
                 </div>
             </div>

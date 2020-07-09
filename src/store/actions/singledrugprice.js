@@ -81,6 +81,9 @@ export const selectmedicine = (userinput,firstsuggestion) =>{
                 strengths.push(
                     response.data.output[key].strength_in_mg
                 )
+                strengths.push(
+                    response.data.output[key].prescription
+                )
                 
             }
             distinctpackforms = [... new Set(packform)]
@@ -136,13 +139,14 @@ export const fetch_finalmed_success = (finalmed) =>{
     }
 }
 
-export const fetch_finalmed = (medname,manufacturer,packform,strength) =>{
+export const fetch_finalmed = (medname,manufacturer,packform,strength,prescription) =>{
     return dispatch =>{
         dispatch(fetch_finalmed_start())
         console.log(medname)
         console.log(manufacturer)
         console.log(packform)
         console.log(strength)
+        console.log(prescription)
         let finalmed = [];
         const url = "http://127.0.0.1:5000/api/filter_api"
         axios.post(url,{
@@ -150,7 +154,7 @@ export const fetch_finalmed = (medname,manufacturer,packform,strength) =>{
             manufacturer: manufacturer,
             strength: strength,
             pack_form: packform,
-            prescription:['']  
+            prescription: prescription  
         })
         .then(response =>{
             console.log(response)
