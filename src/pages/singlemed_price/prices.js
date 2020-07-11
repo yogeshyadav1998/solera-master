@@ -38,7 +38,7 @@ class prices extends Component{
         if(this.state.manufacturer.indexOf(event.target.value) === -1){
             this.setState({manufacturer: this.state.manufacturer.concat(event.target.value)})
             setTimeout(() => {
-                this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform,this.state.strength);
+                this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform,this.state.strength,this.state.prescription);
             }, 500);
         }else{
             var index = this.state.manufacturer.indexOf(event.target.value)
@@ -46,7 +46,7 @@ class prices extends Component{
             var manufacturers = this.state.manufacturer.filter( e => e != event.target.value)
             this.setState({manufacturer: manufacturers})
             setTimeout(() => {
-                this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform,this.state.strength);
+                this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform,this.state.strength,this.state.prescription);
             }, 500);
         }
     }
@@ -55,7 +55,7 @@ class prices extends Component{
         if(this.state.packform.indexOf(event.target.value) === -1){
             this.setState({packform: this.state.packform.concat(event.target.value)})
             setTimeout(() => {
-                this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform,this.state.strength);
+                this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform,this.state.strength,this.state.prescription);
             }, 500);
         }else{
             var index = this.state.packform.indexOf(event.target.value)
@@ -63,7 +63,7 @@ class prices extends Component{
             var packform = this.state.packform.filter( e => e != event.target.value)
             this.setState({packform: packform})
             setTimeout(() => {
-                this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform,this.state.strength);
+                this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform,this.state.strength,this.state.prescription);
             }, 500);
         }
     }
@@ -72,7 +72,7 @@ class prices extends Component{
         if(this.state.strength.indexOf(event.target.value) === -1){
             this.setState({strength: this.state.strength.concat(event.target.value)})
             setTimeout(() => {
-                this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform,this.state.strength);
+                this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform,this.state.strength,this.state.prescription);
             }, 50);
         }else{
             var index = this.state.strength.indexOf(event.target.value)
@@ -80,7 +80,7 @@ class prices extends Component{
             var strength = this.state.strength.filter( e => e != event.target.value)
             this.setState({strength: strength})
             setTimeout(() => {
-                this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform,this.state.strength);
+                this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform,this.state.strength,this.state.prescription);
             }, 500);
         }
     }
@@ -126,21 +126,14 @@ class prices extends Component{
             })
         )
 
-        let strengthlist;
-        if(this.props.strengths){
-            strengthlist= (
-            
+        let strengthlist=(
             this.props.strengths.map((strength, index)=>{
                 return(
                     <Checkbox style={{margin: "5px"}} value={strength} onChange={this.handlestrengthChange} className="manufacturer" > {strength}</Checkbox>
                 // <option value={strength} key={index}>{strength}</option>
                 )
             })
-        )}else{
-            strengthlist=(
-                <option value={""} >not available</option>
-            )
-        }
+        )
 
         let prescriptionlist=(
            <div>
@@ -198,30 +191,8 @@ class prices extends Component{
                                 <p  className="filter_type">Prescription</p>
                                 {prescriptionlist}
                             </div>
-                            {/* <select className="filter" defaultValue="" name="manufacturers" onChange={this.handlemanufacturerChange}>
-                            <option value="" disabled selected>Select Manufacturer</option>
-                            <option value="">All</option>
-                            {manufacturerlist}
-                            </select>
-                            <select className="filter" defaultValue="" name="pack_form" onChange={this.handlepackformChange}  >
-                            <option value="" disabled selected>Select Pack Form</option>
-                            {packformlist}
-                            </select>
-                            <select className="filter" defaultValue="" name="strength" onChange={this.handlestrengthChange} >
-                            <option value="" disabled selected>Select Strength</option>
-                            <option value="" selected>All</option>
-                            {strengthlist}
-                            </select>
-                            <select className="filter" defaultValue="" name="information_type" onChange={this.handleinformationtypeChange} >
-                            <option value="prices" selected>prices</option>
-                            <option value="druginfo">Drug Information</option>
-                            </select> */}
                         </div>
                         <div className="information_section">
-                            {/* <div className="buttons">
-                                <button className="infobutton" value="prices" onClick={this.handleinformationtypeChange}>Prices</button>
-                                <button className="infobutton" value="druginfo" onClick={this.handleinformationtypeChange}>Druginformation</button>
-                            </div> */}
                             {this.state.informationtype== "prices" ? pricelist : this.state.informationtype=="druginfo"? <Drugcompleteinfo drug={this.props.mainmed} /> : null}
                         </div>
                     </div>

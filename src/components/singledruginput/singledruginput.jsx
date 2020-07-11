@@ -25,10 +25,19 @@ class Autocomplete extends Component {
       // What the user has entered
       userInput: null,
       //seleted med
-      selectedmed: []
+      selectedmed: [],
+      //recent searchs
+      recentinput: [],
+      //show recent input
+      showrecentinput: false
     };
+    this.showrecentinput = this.showrecentinput.bind(this);
+    }
+  
+  componentDidMount(){
+    //check for localStorage every time component mounts. You can also do this conditionally.
+    this.recover();
   }
-
   // componentWillReceiveProps(nextProps){
   //   console.log({"Next Props": nextProps})
   //   this.updatesuggestions(nextProps.suggestions)
@@ -98,10 +107,32 @@ class Autocomplete extends Component {
     }
   };
 
+  showrecentinput(){
+    this.setState({
+      showrecentinput: true
+    })
+  }
+
+  savetoRecentSearch = (input) =>{
+    let recentinput = this.state.recentinput ? this.state.recentinput : {recentinput: []};
+
+    recentinput.push({text: input});
+
+    localStorage.setItem('recentsearch', JSON.stringify(recentinput));
+  }
+
+  recover(){
+    //parse the localstorage value
+    let data = JSON.parse(localStorage.getItem('recentsearch'));
+    console.log(data)
+    this.setState({recentinput: data});
+  }
+
 
   myfunction=()=>{
     var input=document.getElementById('input').value
     console.log(input)
+    this.savetoRecentSearch(input);
     this.props.onselectmedicine(input,this.props.suggestions[0]);
   }
 
@@ -116,11 +147,32 @@ class Autocomplete extends Component {
         activeSuggestion,
         filteredSuggestions,
         showSuggestions,
-        userInput
+        userInput,
+        recentinput
       }
     } = this;
 
     let suggestionsListComponent;
+    if(this.state.showrecentinput && recentinput){
+      suggestionsListComponent = (
+        <ul className="suggestions">
+            {recentinput.map((suggestion, index) => {
+              let className;
+
+              // Flag the active suggestion with a class
+              if (index === activeSuggestion) {
+                className = "suggestion-active";
+              }
+
+              return (
+                <li className={className} key={suggestion.text} onClick={onClick}>
+                  {suggestion.text}
+                </li>
+              );
+            })}
+          </ul>
+      )
+    }
 
     if (showSuggestions && userInput) {
       if (filteredSuggestions.length) {
@@ -162,6 +214,7 @@ class Autocomplete extends Component {
           id="input"
           placeholder="Type a drug name (like Atorvastin,Sildenafil,etc)"
           type="text"
+          onClick={this.showrecentinput}
           onChange={onChange}
           onKeyDown={onKeyDown}
           value={userInput}
