@@ -131,13 +131,6 @@ tbody tr:hover {
   background-color: #eee;
 }
 
-option{
-  background-color: rgb(115, 216, 216);
-}
-
-option :hover :focus :active{
-  background-color: rgb(36, 139, 131);
-}
 
 .no-suggestions {
   color: black;

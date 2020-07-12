@@ -67,6 +67,7 @@ class Autocomplete extends Component {
       activeSuggestion: 0,
       filteredSuggestions: [],
       showSuggestions: false,
+      showrecentinput: false,
       userInput: e.currentTarget.innerText
     });
   };
