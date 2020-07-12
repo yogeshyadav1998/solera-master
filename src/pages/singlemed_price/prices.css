@@ -26,6 +26,7 @@
 
 
 .filter_type{
+    color: grey;
     font-size: 1.3rem;
     font-weight: 700;
 }
@@ -33,6 +34,7 @@
 .filter_select{
     width: 300px;
     padding: 10px;
+    border-radius: 5px;
 }
 
 .filter_option{
@@ -71,5 +73,12 @@
     padding: 0px 10px;
     border: none;
     color: grey;
+    cursor: pointer;
+}
+
+.clearall_button{
+    color: rosybrown;
+    background: none;
+    border: none;
     cursor: pointer;
 }

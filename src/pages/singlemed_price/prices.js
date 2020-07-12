@@ -24,7 +24,7 @@ class prices extends Component{
             packform: [""],
             strength: [""],
             prescription: [""],
-            selectedfilters: [""],
+            selectedfilters: [],
             informationtype:'prices',
             options: [{name: 'Srigar', id: 1},{name: 'Sam', id: 2}]
         };
@@ -34,6 +34,7 @@ class prices extends Component{
         this.handlestrengthChange = this.handlestrengthChange.bind(this);
         this.handleprescriptionchange = this.handleprescriptionchange.bind(this);
         this.handleslectedfilterremove = this.handleslectedfilterremove.bind(this);
+        this.clearallfilters = this.clearallfilters.bind(this);
     }
 
 
@@ -45,7 +46,7 @@ class prices extends Component{
             })
             setTimeout(() => {
                 this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform,this.state.strength,this.state.prescription);
-            }, 500);
+            }, 200);
         }else{
             var manufacturers = this.state.manufacturer.filter( e => e != event.target.value)
             var selectedfilters = this.state.selectedfilters.filter( e => e != event.target.value)
@@ -55,7 +56,7 @@ class prices extends Component{
             })
             setTimeout(() => {
                 this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform,this.state.strength,this.state.prescription);
-            }, 300);
+            }, 200);
         }
     }
 
@@ -67,7 +68,7 @@ class prices extends Component{
             })
             setTimeout(() => {
                 this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform,this.state.strength,this.state.prescription);
-            }, 500);
+            }, 200);
         }else{
             var index = this.state.packform.indexOf(event.target.value)
             console.log(index)
@@ -78,7 +79,7 @@ class prices extends Component{
                 selectedfilters: selectedfilters})
             setTimeout(() => {
                 this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform,this.state.strength,this.state.prescription);
-            }, 500);
+            }, 200);
         }
     }
 
@@ -89,7 +90,7 @@ class prices extends Component{
                 selectedfilters: this.state.selectedfilters.concat(event.target.value)})
             setTimeout(() => {
                 this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform,this.state.strength,this.state.prescription);
-            }, 50);
+            }, 200);
         }else{
             var index = this.state.strength.indexOf(event.target.value)
             console.log(index)
@@ -100,7 +101,7 @@ class prices extends Component{
                 selectedfilters: selectedfilters})
             setTimeout(() => {
                 this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform,this.state.strength,this.state.prescription);
-            }, 500);
+            }, 200);
         }
     }
 
@@ -117,7 +118,7 @@ class prices extends Component{
             })
             setTimeout(() => {
                 this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform,this.state.strength,this.state.prescription);
-            }, 500);
+            }, 200);
         }else{
             var index = this.state.prescription.indexOf(event.target.value)
             console.log(index)
@@ -128,7 +129,7 @@ class prices extends Component{
                 selectedfilters: selectedfilters})
             setTimeout(() => {
                 this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform,this.state.strength,this.state.prescription);
-            }, 500);
+            }, 200);
         }
     }
 
@@ -143,7 +144,7 @@ class prices extends Component{
             })
             setTimeout(() => {
                 this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform,this.state.strength,this.state.prescription);
-            }, 300);
+            }, 200);
         }else if(this.state.strength.indexOf(event.target.value) != -1){
             var strength = this.state.strength.filter( e => e != event.target.value)
             var selectedfilters = this.state.selectedfilters.filter( e => e != event.target.value)
@@ -152,7 +153,7 @@ class prices extends Component{
                 selectedfilters: selectedfilters})
             setTimeout(() => {
                 this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform,this.state.strength,this.state.prescription);
-            }, 500);
+            }, 200);
         }else if(this.state.packform.indexOf(event.target.value) != -1){
             var packform = this.state.packform.filter( e => e != event.target.value)
             var selectedfilters = this.state.selectedfilters.filter( e => e != event.target.value)
@@ -161,7 +162,7 @@ class prices extends Component{
                 selectedfilters: selectedfilters})
             setTimeout(() => {
                 this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform,this.state.strength,this.state.prescription);
-            }, 500);
+            }, 200);
         }else if(this.state.prescription.indexOf(event.target.value) != -1){
             var prescription = this.state.prescription.filter( e => e != event.target.value)
             var selectedfilters = this.state.selectedfilters.filter( e => e != event.target.value)
@@ -170,8 +171,21 @@ class prices extends Component{
                 selectedfilters: selectedfilters})
             setTimeout(() => {
                 this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform,this.state.strength,this.state.prescription);
-            }, 500);
+            }, 200);
         }
+    }
+
+    clearallfilters(){
+        this.setState({
+            manufacturer: [""],
+            packform: [""],
+            strength: [""],
+            prescription: [""],
+            selectedfilters: [],
+        })
+        setTimeout(() => {
+            this.props.onfetchfinalmed(this.props.userinput,this.state.manufacturer,this.state.packform,this.state.strength,this.state.prescription);
+        }, 200);
     }
     
     render(){
@@ -179,7 +193,7 @@ class prices extends Component{
             this.props.manufacturers.map((manufacturer, index)=>{
                 return(
                     // <Checkbox style={{margin: "5px"}} value={manufacturer} onChange={this.handlemanufacturerChange} className="manufacturer" > {manufacturer}</Checkbox>
-                <option value={manufacturer} key={index}>{manufacturer}</option>
+                    <option value={manufacturer} key={index}>{manufacturer}</option>
                 )
             })
         )
@@ -188,7 +202,7 @@ class prices extends Component{
             this.props.packforms.map((packform, index)=>{
                 return(
                     // <Checkbox style={{margin: "5px"}} value={packform} onChange={this.handlepackformChange} className="manufacturer" > {packform}</Checkbox>
-                <option value={packform} key={index}>{packform}</option>
+                    <option value={packform} key={index}>{packform}</option>
                 )
             })
         )
@@ -197,7 +211,7 @@ class prices extends Component{
             this.props.strengths.map((strength, index)=>{
                 return(
                     // <Checkbox style={{margin: "5px"}} value={strength} onChange={this.handlestrengthChange} className="manufacturer" > {strength}</Checkbox>
-                <option value={strength} key={index}>{strength}</option>
+                    <option value={strength} key={index}>{strength}</option>
                 )
             })
         )
@@ -285,6 +299,7 @@ class prices extends Component{
                         <div className="information_section">
                             <div className="selectedfilter_section">
                                 {selectedfilters}
+                                <button style={{display: this.state.selectedfilters[0] == null ? "none" : null}} onClick={this.clearallfilters} className="clearall_button">Clear All</button>
                             </div>
                             {this.state.informationtype== "prices" ? pricelist : this.state.informationtype=="druginfo"? <Drugcompleteinfo drug={this.props.mainmed} /> : null}
                         </div>
