@@ -1,0 +1,21 @@
+.sort-and-filter {
+    display: flex;
+    flex-direction: column;
+  }
+  .sort-and-filter > .ant-radio-wrapper {
+    margin: 10px;
+  }
+  .sort-and-filter-brand > .ant-checkbox-group {
+    display: flex;
+    flex-direction: column;
+  }
+  .sort-and-filter-brand > .ant-checkbox-group > .ant-checkbox-wrapper {
+    margin: 8px;
+  }
+  .sort-and-filter-button {
+    display: flex;
+    justify-content: space-between;
+  }
+  .ant-drawer-body {
+    overflow: hidden;
+  }
