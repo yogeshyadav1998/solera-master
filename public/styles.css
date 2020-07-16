@@ -4,26 +4,7 @@
   /* box-sizing: border-box; */
 }
 
-.title{
-  text-align: center;
-  margin-top: 5%;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
 
-.title2{
-  text-align: center;
-  color: rgb(219, 64, 98);
-  margin-top: 1%;
-  font-family: cursive;
-}
-
-.page {
-  background-color: white;
-  height: 100%;
-  margin: auto -16px;
-  padding: 16px 32px;
-  box-shadow: 10 0 0 0 rgba(0, 0, 0, 0.3);
-}
 
 .top{
   text-align: center;
@@ -140,9 +121,10 @@ tbody tr:hover {
 
 .suggestions {
   border: 1px solid #999;
+  border-radius: 5px;
   border-top-width: 0;
   list-style: none;
-  margin-left: 17%;
+  margin: auto;
   max-height: 143px;
   overflow-y: auto;
   padding-left: 0;

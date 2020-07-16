@@ -1,11 +1,12 @@
 .brands_section{
-    width: 50%;
+    width: 100%;
     margin: auto;
     text-align: center;
 }
 
 .brands_heading{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
     font-weight: 700;
     font-family: cursive;
 }

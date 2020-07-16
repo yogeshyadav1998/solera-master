@@ -1,25 +1,44 @@
 .heading{
     display: flex;
     width: 100%;
-    background-color: #e25e5e;
-    padding: 10px 32px;
+    height: 10vh;
+    padding: 2vh;
+    background-color: white;
+    -webkit-box-shadow: 0px 5px 9px 5px rgba(0,0,0,0.25); 
+    box-shadow: 0px 5px 9px 5px rgba(0,0,0,0.25);
 }
 
 .web_title{
-    padding-left: 100px;
+    color: black;
+    position: absolute;
+    left: 45%;
     font-size: 2rem;
     font-weight: 700;
+    text-shadow: #e0e0e0 1px 1px 0, 2px 2px 2px rgba(168,73,45,0);
 }
 
 .language_selector{
     position: absolute;
-    right: 10%;
+    left: 5%;
 }
 
 .language_toggle_button{
-    color: white;
+    color: Black;
     background: none;
     border: none;
     padding: 5px;
     margin: 5px;
+}
+
+.auth_section{
+    padding: 10px;
+    display: flex;
+    position: absolute;
+    right: 5%;
+}
+
+.cart_section{
+    padding: 10px;
+    position: absolute;
+    right: 15%;
 }
