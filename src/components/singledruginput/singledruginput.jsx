@@ -69,7 +69,6 @@ class Autocomplete extends Component {
       showrecentinput: false,
       userInput: e.currentTarget.innerText
     });
-    this.myfunction()
   };
 
   onKeyDown = e => {

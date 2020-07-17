@@ -22,7 +22,7 @@ function Heading () {
                 <ShoppingCartOutlined style={{width:"10px", padding:"3px"}} />
             </Col>
             <Col className="auth_section">
-                <p>Login / Sign Up</p>
+                <p className="login_text">Login / Sign Up</p>
                 <UserOutlined style={{width:"10px", padding:"3px"}} />
             </Col>
         </Row>
