@@ -1,5 +1,6 @@
 import * as actiontype from './actiontypes';
 import axios from 'axios';
+import history from '../../history';
 
 export const updatesuggestions = (suggestions,input) =>{
     return{
@@ -65,7 +66,6 @@ export const selectmedicine = (userinput,firstsuggestion) =>{
             input: userinput
         })
         .then(response =>{
-            console.log("hello yogesh")
             console.log(response)
             medname = response.data.output[0].medName
             userinputintro = response.data.output[0].Introduction
@@ -97,7 +97,6 @@ export const selectmedicine = (userinput,firstsuggestion) =>{
                     input: firstsuggestion
                 })
             .then(response =>{
-                console.log("hello yadav")
                 console.log(response)
                 medname = response.data.output[0].medName
                 userinputintro = response.data.output[0].Introduction
@@ -120,6 +119,7 @@ export const selectmedicine = (userinput,firstsuggestion) =>{
                 distinctmanufacturers = [... new Set(manufacturer)]
             })
         }})
+        history.replace('/singlemedprice');
         setTimeout(function(){
         dispatch(updateselectedmed(finalmed, distinctmanufacturers, distinctpackforms, distinctstrengths, medname, userinputintro, completeinput))
         },1000)
