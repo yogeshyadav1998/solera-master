@@ -1,14 +1,12 @@
-import React, { Component, Fragment,useEffect } from "react";
-import PropTypes from "prop-types";
-import axios from 'axios';
+import React, { Component, Fragment} from "react";
 import {connect} from 'react-redux';
-import { Link } from 'react-router-dom';
-import { Card,Row, Col, Icon, Avatar } from 'antd';
+import { Link, Redirect } from 'react-router-dom';
+import { Row, Col, Input } from 'antd';
+import {SearchOutlined} from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 import { withTranslation } from 'react-i18next';
 import './singledruginput.css';
 import * as action from '../../store/actions/index';
-
 
 class Autocomplete extends Component {
 
@@ -36,8 +34,9 @@ class Autocomplete extends Component {
   
   componentDidMount(){
     //check for localStorage every time component mounts. You can also do this conditionally.
-    this.recover();
+    // this.recover();
   }
+
   // componentWillReceiveProps(nextProps){
   //   console.log({"Next Props": nextProps})
   //   this.updatesuggestions(nextProps.suggestions)
@@ -115,7 +114,7 @@ class Autocomplete extends Component {
   }
 
   savetoRecentSearch = (input) =>{
-    let recentinput = this.state.recentinput ? this.state.recentinput : {recentinput: []};
+    let recentinput = this.state.recentinput != null ? this.state.recentinput : {recentinput: []};
 
     recentinput.push({text: input});
 
@@ -125,6 +124,7 @@ class Autocomplete extends Component {
   recover(){
     //parse the localstorage value
     let data = JSON.parse(localStorage.getItem('recentsearch'));
+    console.log("hello")
     console.log(data)
     this.setState({recentinput: data});
   }
@@ -207,9 +207,20 @@ class Autocomplete extends Component {
 
     return (
       <Fragment>
-        <div className="singledruginput">
+        <Row className="singledruginput">
         {/* <p className="section_heading">{t('homeheading.1')}</p> */}
-        <input
+        <Input
+          placeholder="Basic usage"
+          id="input"
+          className="druginput"
+          placeholder="input search text"
+          onClick={this.showrecentinput}
+          onChange={onChange}
+          onKeyDown={onKeyDown}
+          value={userInput}
+           />
+        
+        {/* <input
           className="druginput"
           style={{width:"50%"}}
           id="input"
@@ -219,10 +230,10 @@ class Autocomplete extends Component {
           onChange={onChange}
           onKeyDown={onKeyDown}
           value={userInput}
-        />
-        <Link to="/singlemedprice"><button disabled={!this.state.userInput} className="searchbutton" type="submit" onClick={this.myfunction}>FIND THE LOWEST PRICES</button></Link>
+        /> */}
+        <Link to="/singlemedprice"><button disabled={!this.state.userInput} className="searchbutton" type="submit" onClick={this.myfunction}><SearchOutlined /></button></Link>
         {suggestionsListComponent}
-        </div>
+        </Row>
       </Fragment>
       
     );

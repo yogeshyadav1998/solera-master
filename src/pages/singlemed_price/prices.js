@@ -9,12 +9,7 @@ import Pricecard from '../../components/pricecard/pricecard';
 import './prices.css';
 import * as action from '../../store/actions/index';
 import { Checkbox } from 'antd';
-import Select from 'react-select'
-const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
-  ];
+
 class prices extends Component{
 
     constructor(props) {
