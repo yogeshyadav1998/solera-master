@@ -15,6 +15,8 @@
     "i18next-xhr-backend": "^3.1.2",
     "multiselect-react-dropdown": "^1.5.7",
     "nan": "^2.14.1",
+    "rc-pagination": "^2.4.3",
+    "rc-util": "^5.0.5",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-i18next": "^10.12.4",
