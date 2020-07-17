@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import {Row,Col,Icon} from 'antd';
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
 
 import './carousel.css';
 

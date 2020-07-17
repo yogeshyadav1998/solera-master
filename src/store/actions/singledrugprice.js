@@ -119,7 +119,7 @@ export const selectmedicine = (userinput,firstsuggestion) =>{
                 distinctmanufacturers = [... new Set(manufacturer)]
             })
         }})
-        history.replace('/singlemedprice');
+        // history.replace('/singlemedprice');
         setTimeout(function(){
         dispatch(updateselectedmed(finalmed, distinctmanufacturers, distinctpackforms, distinctstrengths, medname, userinputintro, completeinput))
         },1000)

@@ -1,6 +1,6 @@
-import React, { Component, Fragment,useEffect } from "react";
+import React, { Component, Fragment} from "react";
 import {connect} from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Row, Col, Input } from 'antd';
 import {SearchOutlined} from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
@@ -34,8 +34,9 @@ class Autocomplete extends Component {
   
   componentDidMount(){
     //check for localStorage every time component mounts. You can also do this conditionally.
-    this.recover();
+    // this.recover();
   }
+
   // componentWillReceiveProps(nextProps){
   //   console.log({"Next Props": nextProps})
   //   this.updatesuggestions(nextProps.suggestions)
@@ -114,7 +115,7 @@ class Autocomplete extends Component {
   }
 
   savetoRecentSearch = (input) =>{
-    let recentinput = this.state.recentinput ? this.state.recentinput : {recentinput: []};
+    let recentinput = this.state.recentinput != null ? this.state.recentinput : {recentinput: []};
 
     recentinput.push({text: input});
 
@@ -124,6 +125,7 @@ class Autocomplete extends Component {
   recover(){
     //parse the localstorage value
     let data = JSON.parse(localStorage.getItem('recentsearch'));
+    console.log("hello")
     console.log(data)
     this.setState({recentinput: data});
   }
