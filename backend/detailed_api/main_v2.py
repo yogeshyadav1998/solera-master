@@ -2,16 +2,19 @@ from flask import *
 from pymongo import MongoClient
 import re 
 import pymongo
+from bson import ObjectId
+from flask_pymongo import PyMongo
 from flask_cors import CORS
 
-from bson import ObjectId
 #from csvtomongo import csvtomongo
 app=Flask("__main__")
 CORS(app)
-client = MongoClient('localhost',27017)
-#csvtomongo()
+app.config['MONGO_URI']='mongodb+srv://heroku_user:heroku@cluster0-dmk7t.mongodb.net/merged_with_prices?retryWrites=true&w=majority'
+mongo=PyMongo(app)
 
 
+
+client = MongoClient('mongodb+srv://heroku_user:heroku@cluster0-dmk7t.mongodb.net/merged_with_prices?retryWrites=true&w=majority')
 
 @app.route("/")
 def my_index():
@@ -27,7 +30,7 @@ def drug_data():
     inp = inp.replace('"', '')
     print(inp)
    ''' 
-    db=client['MedicineDetail']
+    db=client['merged_with_prices']
     data_merged=db["data_merged"]
     print(data_merged)
     
@@ -52,7 +55,7 @@ def suggestions():
     inp = inp.replace('"', '')
     print(inp)
     
-    db=client['MedicineDetail']
+    db=client['merged_with_prices']
     data_merged=db["data_merged"]
     print(data_merged)
     #resp=data_merged.find({'medName':{'$regex':'^'+inp,'$options':'$i'}}, { "_id": 0, "medName": 1, "pageURL": 1 , "manufacturer": 1, "pharmeasy_price":1,"onemg_price":1,"netmeds_price":1,'search_salts':1,'quantity_in_pack':1}).limit(10)
@@ -72,7 +75,7 @@ def suggestions():
 def getMedicines():  
     inp=request.json['input']
     print(inp) ## Put here connection URI
-    db = client['MedicineDetail']
+    db = client['merged_with_prices']
     data_merged = db["data_merged"]
         #resp = data_merged.find({"medName":input}, { "_id": 0, "medName": 1, "pageURL": 1 , "manufacturer": 1, "pharmeasy_price":1,"onemg_price":1,"netmeds_price":1,'salt':1,'quantity_in_pack':1})
     #resp = list(resp)
@@ -96,7 +99,7 @@ def filter_api():
     manufacturer=request.json['manufacturer']
     strength=request.json['strength']
     pack_form=request.json['pack_form']
-    db = client['MedicineDetail']
+    db = client['merged_with_prices']
     data_merged = db["data_merged"]
     
     resp=data_merged.find({'medName':inp}, { "_id": 0, "medName":1,"manufacturer":1,"prescription_req":1,"selling_price":1,"salts":1,"Units in Pack":1,"Pack Size":1,"Unit of Measurement":1, "pack form":1,"in_stock":1,"Introduction":1,"uses":1,"benefits":1,"directions":1,"side_effects":1,
@@ -127,7 +130,7 @@ def filter_api():
 @app.route('/api/prescription',methods=['POST'])
 def prescription():
     inp=request.json["input"]
-    db=client['MedicineDetail']
+    db=client['merged_with_prices']
     data_merged=db['data_merged']
     response=data_merged.find({'medName':{"$in":inp}},{ "_id": 0, "medName":1,"manufacturer":1,"prescription_req":1,"selling_price":1,"salts":1,"Units in Pack":1,"Pack Size":1,"Unit of Measurement":1, "pack form":1,"in_stock":1,
                               "strength_in_mg":1,"overall_strength":1,"netmeds_price":1,"pharmeasy_price":1,"medlife_price":1,"search_salts":1})
